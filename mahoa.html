@@ -15,7 +15,7 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #ff00cc, #333399);
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
       color: #fff;
       min-height: 100vh;
       display: flex;
@@ -24,10 +24,10 @@
       padding: 20px;
     }
     .container {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.65);
       padding: 25px;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255,255,255,0.3);
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
       width: 100%;
       max-width: 700px;
       text-align: center;
@@ -36,9 +36,22 @@
     h1 {
       margin-bottom: 20px;
       font-size: 28px;
-      background: linear-gradient(90deg, #00ffcc, #ffcc00);
+      font-weight: 700;
+      background: linear-gradient(90deg, #00ffcc, #ffcc00, #ff0066);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: typing 3.5s steps(30, end), blink .8s infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #ffcc00;
+      display: inline-block;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
     textarea {
       width: 100%;
@@ -49,12 +62,17 @@
       border: none;
       outline: none;
       resize: none;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+      transition: all 0.3s;
+    }
+    textarea:focus {
+      box-shadow: 0 0 12px #00ffcc, inset 0 0 12px rgba(0,0,0,0.6);
     }
     textarea::placeholder {
-      color: #ddd;
+      color: #bbb;
+      font-style: italic;
     }
     .buttons {
       margin-top: 20px;
@@ -64,19 +82,28 @@
       justify-content: center;
     }
     button {
-      padding: 12px 18px;
+      padding: 12px 20px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
       background: linear-gradient(45deg, #ff6a00, #ee0979);
       color: #fff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
     }
     button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+    button:active {
+      transform: scale(0.95);
+      animation: click 0.2s;
+    }
+    @keyframes click {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.9); }
+      100% { transform: scale(1); }
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -86,6 +113,11 @@
       margin-top: 20px;
       font-size: 13px;
       color: #ccc;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    footer:hover {
+      color: #fff;
     }
   </style>
 </head>
@@ -108,25 +140,25 @@
       const box = document.getElementById("codeBox");
       code = box.value;
       if (!code) return alert("Bạn phải nhập code trước!");
-      box.value = "Đang Mã Hoá... Vui lòng chờ chút...";
+      box.value = "⏳ Đang Mã Hoá... Vui lòng chờ...";
       setTimeout(() => {
         const compilation = escape(code);
         box.value = `<script>\n<!--\ndocument.write(unescape("${compilation}"));\n//-->\n<\/script>`;
-        alert("Code đã được mã hoá thành công!");
+        alert("✅ Code đã được mã hoá thành công!");
       }, 500);
     }
     function uncompile() {
       const box = document.getElementById("codeBox");
-      if (!box.value) return alert("Chưa có gì để giải mã!");
+      if (!box.value) return alert("⚠️ Chưa có gì để giải mã!");
       try {
         box.value = unescape(box.value);
       } catch (e) {
-        alert("Không thể giải mã!");
+        alert("❌ Không thể giải mã!");
       }
     }
     function selectCode() {
       const box = document.getElementById("codeBox");
-      if (!box.value) return alert("Không có gì để chọn!");
+      if (!box.value) return alert("⚠️ Không có gì để chọn!");
       box.focus();
       box.select();
     }
