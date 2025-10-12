@@ -182,8 +182,8 @@ document.addEventListener("mousemove", function(e) {
   document.body.appendChild(snow);
 
   // Vị trí xuất hiện tại con trỏ chuột
-  snow.style.left = (e.pageX - size / 2) + "px";
-  snow.style.top = (e.pageY - size / 2) + "px";
+  snow.style.left = e.pageX + "px";
+  snow.style.top = e.pageY + "px";
 
   // Kích thước & tốc độ ngẫu nhiên
   const size = Math.random() * 15 + 10 + "px";
