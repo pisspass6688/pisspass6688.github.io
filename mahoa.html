@@ -11,6 +11,8 @@
   <meta property="og:image" content="https://i.imgur.com/anH3h4x.png" />
   <meta property="og:url" content="https://www.facebook.com/KenzDev8386/" />
   <meta property="og:type" content="website" />
+
+  <!-- ======= CSS CHÍNH ======= -->
   <style>
     body {
       margin: 0;
@@ -121,82 +123,81 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>✨ Mã Hoá & Giải Mã Code ✨</h1>
     <textarea id="codeBox" placeholder="Nhập code HTML/Javascript của bạn vào đây..."></textarea>
+
     <div class="buttons">
       <button onclick="generate()">🔒 Mã Hoá</button>
       <button onclick="uncompile()">🔓 Giải Mã</button>
       <button onclick="selectCode()">📋 Chọn Tất Cả</button>
       <button onclick="resetCode()">♻️ Làm Lại</button>
     </div>
+
     <footer>Made with <a href="https://www.facebook.com/KenzDev8386/">💖</a> by Mạnh KenZ</footer>
+
     <style>
-      footer{
+      footer {
         font: 1em sans-serif;
         font-weight: 100px;
         font-style: oblique;
         font-size: 20px;
       }
       a {
-      text-decoration: none;
+        text-decoration: none;
       }
     </style>
   </div>
 
+  <!-- ======= HIỆU ỨNG TUYẾT ======= -->
   <style>
     body {
-  margin: 0;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #00111a, #003366);
-  height: 100vh;
-  cursor: crosshair;
-}
-
-/* Bông tuyết */
-.snowflake {
-  position: fixed;
-  top: 0;
-  color: white;
-  font-size: 10px;
-  pointer-events: none;
-  opacity: 0.8;
-  animation: fall linear forwards;
-}
-
-/* Hiệu ứng rơi */
-@keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #00111a, #003366);
+      height: 100vh;
+      cursor: crosshair;
+    }
+    .snowflake {
+      position: fixed;
+      top: 0;
+      color: white;
+      font-size: 10px;
+      pointer-events: none;
+      opacity: 0.8;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
+
   <script>
-document.addEventListener("mousemove", function(e) {
-  const snow = document.createElement("div");
-  snow.classList.add("snowflake");
-  snow.innerHTML = "❄";
-  document.body.appendChild(snow);
+    document.addEventListener("mousemove", function(e) {
+      const snow = document.createElement("div");
+      snow.classList.add("snowflake");
+      snow.innerHTML = "❄";
+      document.body.appendChild(snow);
 
-  // Vị trí xuất hiện tại con trỏ chuột
-  snow.style.left = snow.style.top = e.pageX + "px";
-  snow.style.top = e.pageY + "px";
+      snow.style.left = e.pageX + "px";
+      snow.style.top = e.pageY + "px";
 
-  // Kích thước & tốc độ ngẫu nhiên
-  const size = Math.random() * 15 + 10 + "px";
-  snow.style.fontSize = size;
-  snow.style.animationDuration = (Math.random() * 3 + 3) + "s"; // 3–6s rơi
+      const size = Math.random() * 15 + 10 + "px";
+      snow.style.fontSize = size;
+      snow.style.animationDuration = (Math.random() * 3 + 3) + "s";
 
-  // Tự xóa sau khi rơi
-  setTimeout(() => {
-    snow.remove();
-  }, 6000);
-});
-</script>
+      setTimeout(() => {
+        snow.remove();
+      }, 6000);
+    });
+  </script>
 
+  <!-- ======= CHỨC NĂNG MÃ HOÁ / GIẢI MÃ ======= -->
   <script>
     let code = "";
     function generate() {
