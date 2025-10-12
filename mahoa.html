@@ -145,6 +145,58 @@
     </style>
   </div>
 
+  <style>
+    body {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #00111a, #003366);
+  height: 100vh;
+  cursor: crosshair;
+}
+
+/* Bông tuyết */
+.snowflake {
+  position: fixed;
+  top: 0;
+  color: white;
+  font-size: 10px;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: fall linear forwards;
+}
+
+/* Hiệu ứng rơi */
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+  </style>
+  <script>
+document.addEventListener("mousemove", function(e) {
+  const snow = document.createElement("div");
+  snow.classList.add("snowflake");
+  snow.innerHTML = "❄";
+  document.body.appendChild(snow);
+
+  // Vị trí xuất hiện tại con trỏ chuột
+  snow.style.left = e.pageX + "px";
+  snow.style.top = e.pageY + "px";
+
+  // Kích thước & tốc độ ngẫu nhiên
+  const size = Math.random() * 15 + 10 + "px";
+  snow.style.fontSize = size;
+  snow.style.animationDuration = (Math.random() * 3 + 3) + "s"; // 3–6s rơi
+
+  // Tự xóa sau khi rơi
+  setTimeout(() => {
+    snow.remove();
+  }, 6000);
+});
+</script>
+
   <script>
     let code = "";
     function generate() {
