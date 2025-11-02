@@ -1,5 +1,639 @@
-<script>
-<!--
-document.write(unescape("%0A%3C%21DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22vi%22%3E%0A%3Chead%3E%0A%20%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%3Ctitle%3ETh%F4ng%20Tin%20Thanh%20To%E1n%3C/title%3E%0A%20%20%0A%20%20%3C%21--%20SEO%20Meta%20--%3E%0A%20%20%3Cmeta%20name%3D%22description%22%20content%3D%22Trang%20th%F4ng%20tin%20thanh%20to%E1n%20-%20Ng%E2n%20h%E0ng%20Vietcombank%2C%20m%E3%20QR%20v%E0%20s%u1ED1%20t%E0i%20kho%u1EA3n.%22%3E%0A%0A%20%20%3C%21--%20Open%20Graph%20%28Facebook%2C%20Zalo%2C%20Messenger...%29%20--%3E%0A%20%20%3Cmeta%20property%3D%22og%3Atitle%22%20content%3D%22Profile%20Th%F4ng%20Tin%20Thanh%20To%E1n%20-%20hlisme.site%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Adescription%22%20content%3D%22Trang%20th%F4ng%20tin%20thanh%20to%E1n%20Vietcombank%20-%20Qu%E9t%20m%E3%20QR%20ho%u1EB7c%20sao%20ch%E9p%20s%u1ED1%20t%E0i%20kho%u1EA3n%20nhanh%20ch%F3ng.%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Aimage%22%20content%3D%22https%3A//i.ibb.co/8n7Jg9vy/B-a.jpg%22%3E%20%3C%21--%20link%20%u1EA3nh%20thumbnail%20--%3E%0A%20%20%3Cmeta%20property%3D%22og%3Aurl%22%20content%3D%22https%3A//manhkenz.github.io%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Atype%22%20content%3D%22website%22%3E%0A%0A%20%20%3C%21--%20Favicon%20%28icon%20nh%u1ECF%20tr%EAn%20tab%20tr%ECnh%20duy%u1EC7t%29%20--%3E%0A%20%20%3Clink%20rel%3D%22icon%22%20type%3D%22image/png%22%20href%3D%22https%3A//i.ibb.co/MkFwmL94/Icon.png%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22preconnect%22%20href%3D%22https%3A//fonts.googleapis.com%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22preconnect%22%20href%3D%22https%3A//fonts.gstatic.com%22%20crossorigin%3E%0A%20%20%20%20%3Clink%20href%3D%22https%3A//fonts.googleapis.com/css2%3Ffamily%3DInter%3Awght@300%3B400%3B500%3B600%3B700%26display%3Dswap%22%20rel%3D%22stylesheet%22%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20%3Aroot%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20--background-dark%3A%20%230B0F14%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--card-background%3A%20rgba%2820%2C%2042%2C%20122%2C%200.15%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--indigo-glow%3A%20rgba%2820%2C%2042%2C%20122%2C%200.5%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--electric-blue%3A%20%231E5BFF%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--electric-blue-glow%3A%20rgba%2830%2C%2091%2C%20255%2C%200.45%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--text-primary%3A%20%23E0E0FF%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--text-secondary%3A%20rgba%28224%2C%20224%2C%20255%2C%200.7%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--border-color%3A%20rgba%2830%2C%2091%2C%20255%2C%200.3%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--shadow-color%3A%20rgba%280%2C%200%2C%200%2C%200.45%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20*%2C%20*%3A%3Abefore%2C%20*%3A%3Aafter%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-sizing%3A%20border-box%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%200%3B%0A%20%20%20%20%20%20%20%20%7D%0A/*%20PC%20%28desktop%20%3E%3D%201024px%29%20thu%20nh%u1ECF%20l%u1EA1i%20*/%0A@media%20%28min-width%3A%201024px%29%20%7B%0A%20%20%20%20.main-container%20%7B%0A%20%20%20%20%20%20%20%20max-width%3A%20360px%3B%20%20%20/*%20g%u1ECDn%20h%u01A1n%20420px%20*/%0A%20%20%20%20%20%20%20%20padding%3A%201.5rem%3B%0A%20%20%20%20%20%20%20%20margin-top%3A%20100px%3B%20%20/*%20c%E1ch%20n%F3c%20trang%20100px%20*/%0A%20%20%20%20%7D%0A%0A%20%20%20%20.qr-code-wrapper%20%7B%0A%20%20%20%20%20%20%20%20max-width%3A%20220px%3B%20%20%20/*%20QR%20nh%u1ECF%20l%u1EA1i%2C%20nh%ECn%20c%E2n%20*/%0A%20%20%20%20%20%20%20%20padding-top%3A%2060px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.account-info%20h1%20%7B%0A%20%20%20%20%20%20%20%20font-size%3A%2020px%3B%20/*%20ch%u1EEF%20nh%u1ECF%20l%u1EA1i%20%u0111%u1EC3%20g%u1ECDn%20*/%0A%20%20%20%20%7D%0A%0A%20%20%20%20.account-number%20%7B%0A%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.share-button%2C%20.download-button%20%7B%0A%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%20%20%20%20padding%3A%2012px%2020px%3B%0A%20%20%20%20%20%20%20%20min-width%3A%20180px%3B%0A%20%20%20%20%20%20%20%20max-width%3A%20220px%3B%0A%20%20%20%20%7D%0A%7D%0A%0A%0A/*%20Mobile%3A%20ph%F3ng%20to%20khung%2C%20QR%2C%20n%FAt%20*/%0A@media%20%28max-width%3A%20768px%29%20%7B%0A%20%20%20%20.main-container%20%7B%0A%20%20%20%20%20%20%20%20max-width%3A%2095%25%3B%20%20%20/*%20g%u1EA7n%20full%20m%E0n%20h%ECnh%20*/%0A%20%20%20%20%20%20%20%20padding%3A%201.2rem%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.qr-code-wrapper%20%7B%0A%20%20%20%20%20%20%20%20max-width%3A%20320px%3B%20%20/*%20to%20h%u01A1n%20m%u1EB7c%20%u0111%u1ECBnh%20256px%20*/%0A%20%20%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.account-info%20h1%20%7B%0A%20%20%20%20%20%20%20%20font-size%3A%2022px%3B%20/*%20ch%u1EEF%20to%20h%u01A1n%20*/%0A%20%20%20%20%7D%0A%0A%20%20%20%20.account-number%20%7B%0A%20%20%20%20%20%20%20%20font-size%3A%2018px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.share-button%2C%20.download-button%20%7B%0A%20%20%20%20%20%20%20%20width%3A%20100%25%3B%20%20%20%20%20%20%20%20/*%20full%20chi%u1EC1u%20ngang%20*/%0A%20%20%20%20%20%20%20%20max-width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20font-size%3A%2016px%3B%20%20%20%20/*%20ch%u1EEF%20b%u1EF1%20h%u01A1n%20*/%0A%20%20%20%20%20%20%20%20padding%3A%2016px%2024px%3B%20/*%20n%FAt%20cao%20h%u01A1n%20*/%0A%20%20%20%20%7D%0A%7D%0A%0A%20%20%20%20%20%20%20%20html%2C%20body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20overscroll-behavior%3A%20none%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20%27Inter%27%2C%20sans-serif%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20var%28--background-dark%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--text-primary%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20body%3A%3Abefore%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20content%3A%20%27%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20right%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20bottom%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-image%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20radial-gradient%28circle%20at%20center%2C%20var%28--text-secondary%29%201px%2C%20transparent%201px%29%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20radial-gradient%28circle%20at%20center%2C%20var%28--text-secondary%29%201px%2C%20transparent%201px%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-size%3A%2040px%2040px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-position%3A%200%200%2C%2020px%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200.1%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20z-index%3A%20-2%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20body%3A%3Aafter%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20content%3A%20%27%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20500px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20500px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%20var%28--x%2C%2050%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%20var%28--y%2C%2050%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translate%28-50%25%2C%20-50%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20radial-gradient%28circle%2C%20var%28--electric-blue-glow%29%200%25%2C%20transparent%2060%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur%28100px%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200.7%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20pointer-events%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%20all%200.3s%20ease%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20z-index%3A%20-1%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.main-container%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%202rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%20420px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.card%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20var%28--card-background%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20var%28--border-color%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2032px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2028px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20backdrop-filter%3A%20blur%2816px%29%20saturate%28150%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20-webkit-backdrop-filter%3A%20blur%2816px%29%20saturate%28150%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%2024px%2060px%20var%28--shadow-color%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform-style%3A%20preserve-3d%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%20transform%200.2s%20cubic-bezier%280.175%2C%200.885%2C%200.32%2C%201.275%29%2C%20box-shadow%200.2s%20ease-out%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20will-change%3A%20transform%2C%20box-shadow%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY%2820px%29%20scale%280.98%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20fadeInCard%200.8s%200.2s%20forwards%20cubic-bezier%280.25%2C%201%2C%200.5%2C%201%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20@keyframes%20fadeInCard%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20to%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%201%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY%280%29%20scale%281%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.card%3Ahover%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%2032px%2080px%20rgba%280%2C0%2C0%2C.55%29%2C%200%200%2040px%20var%28--electric-blue-glow%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.card-header%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20space-between%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%2024px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.bank-logos%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20gap%3A%2012px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.bank-logo%2C%20.napas-logo%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2018px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20contain%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.vietqr-logo%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20contain%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.qr-code-wrapper%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20%23fff%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2016px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%200%2032px%20var%28--electric-blue-glow%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%20256px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.qr-code-container%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.qr-code-container%20canvas%2C%0A%20%20%20%20%20%20%20%20.qr-code-container%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%20%21important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20auto%20%21important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20contain%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2012px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.account-info%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%2024px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%2032px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.account-info%20h1%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2024px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%201.3%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%208px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20letter-spacing%3A%20-0.5px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.account-number%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--text-secondary%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20500%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%206px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20user-select%3A%20all%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.bank-branch%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--text-secondary%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200.8%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20400%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.card-footer%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%2024px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.share-button%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20inline-flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20gap%3A%2010px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-image%3A%20linear-gradient%2890deg%2C%20%23142A7A%200%25%2C%20%231E5BFF%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%20999px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2014px%2028px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--text-primary%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%208px%2024px%20var%28--electric-blue-glow%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%20all%200.3s%20cubic-bezier%280.175%2C%200.885%2C%200.32%2C%201.275%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20-webkit-tap-highlight-color%3A%20transparent%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.share-button%20svg%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%20transform%200.3s%20ease%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.share-button%3Ahover%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20scale%281.05%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%2012px%2032px%20var%28--electric-blue-glow%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.share-button%3Ahover%20svg%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20rotate%28-10deg%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.share-button%3Aactive%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20scale%280.98%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%204px%2016px%20var%28--electric-blue-glow%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.feedback-message%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%2016px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--text-secondary%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2013px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20min-height%3A%2018px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY%2810px%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%20opacity%200.3s%20ease%2C%20transform%200.3s%20ease%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.feedback-message.visible%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%201%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY%280%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20/*%20%C1p%20d%u1EE5ng%20style%20chung%20cho%20c%u1EA3%20share%20v%E0%20download%20*/%0A.share-button%2C%20.download-button%20%7B%0A%20%20%20%20display%3A%20inline-flex%3B%0A%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20gap%3A%2010px%3B%0A%20%20%20%20background-image%3A%20linear-gradient%2890deg%2C%20%23142A7A%200%25%2C%20%231E5BFF%20100%25%29%3B%0A%20%20%20%20border%3A%20none%3B%0A%20%20%20%20border-radius%3A%20999px%3B%0A%20%20%20%20padding%3A%2014px%2028px%3B%0A%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20color%3A%20var%28--text-primary%29%3B%0A%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20box-shadow%3A%200%208px%2024px%20var%28--electric-blue-glow%29%3B%0A%20%20%20%20transition%3A%20all%200.3s%20cubic-bezier%280.175%2C%200.885%2C%200.32%2C%201.275%29%3B%0A%20%20%20%20-webkit-tap-highlight-color%3A%20transparent%3B%0A%20%20%20%20margin-top%3A%2012px%3B%20/*%20t%u1EA1o%20kho%u1EA3ng%20c%E1ch%20gi%u1EEFa%20c%E1c%20n%FAt%20*/%0A%20%20%20%20width%3A%20100%25%3B%20/*%20c%u0103n%20v%u1EEBa%20khung%20card%20*/%0A%7D%0A%0A/*%20Hi%u1EC7u%20%u1EE9ng%20hover/active%20gi%u1EEF%20nguy%EAn%20*/%0A.share-button%3Ahover%2C%20.download-button%3Ahover%20%7B%0A%20%20%20%20transform%3A%20scale%281.05%29%3B%0A%20%20%20%20box-shadow%3A%200%2012px%2032px%20var%28--electric-blue-glow%29%3B%0A%7D%0A%0A.share-button%3Aactive%2C%20.download-button%3Aactive%20%7B%0A%20%20%20%20transform%3A%20scale%280.98%29%3B%0A%20%20%20%20box-shadow%3A%200%204px%2016px%20var%28--electric-blue-glow%29%3B%0A%7D%0A%0A/*%20Responsive%20*/%0A.main-container%20%7B%0A%20%20%20%20padding%3A%201.5rem%3B%0A%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20max-width%3A%20420px%3B%0A%7D%0A%0A@media%20%28max-width%3A%20480px%29%20%7B%0A%20%20%20%20.main-container%20%7B%0A%20%20%20%20%20%20%20%20padding%3A%201rem%3B%0A%20%20%20%20%20%20%20%20max-width%3A%2095%25%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.account-info%20h1%20%7B%0A%20%20%20%20%20%20%20%20font-size%3A%2020px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.share-button%2C%20.download-button%20%7B%0A%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%20%20%20%20padding%3A%2012px%2020px%3B%0A%20%20%20%20%7D%0A%7D%0A.share-button%2C%20.download-button%20%7B%0A%20%20%20%20width%3A%20auto%3B%20%20%20%20%20%20%20/*%20thay%20v%EC%20100%25%20*/%0A%20%20%20%20min-width%3A%20200px%3B%20%20/*%20%u0111%u1EC3%20kh%F4ng%20b%E9%20qu%E1%20*/%0A%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20margin%3A%208px%20auto%3B%20%20/*%20c%u0103n%20gi%u1EEFa%20trong%20card%20*/%0A%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20justify-content%3A%20center%3B%0A%7D%0A.share-button%2C%0A.download-button%20%7B%0A%20%20%20%20display%3A%20inline-flex%3B%0A%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20gap%3A%2010px%3B%0A%20%20%20%20background-image%3A%20linear-gradient%2890deg%2C%20%23142A7A%200%25%2C%20%231E5BFF%20100%25%29%3B%0A%20%20%20%20border%3A%20none%3B%0A%20%20%20%20border-radius%3A%20999px%3B%0A%20%20%20%20padding%3A%2014px%2028px%3B%0A%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20color%3A%20var%28--text-primary%29%3B%0A%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20box-shadow%3A%200%208px%2024px%20var%28--electric-blue-glow%29%3B%0A%20%20%20%20transition%3A%20all%200.3s%20cubic-bezier%280.175%2C%200.885%2C%200.32%2C%201.275%29%3B%0A%20%20%20%20-webkit-tap-highlight-color%3A%20transparent%3B%0A%20%20%20%20%0A%20%20%20%20/*%20M%u1EB7c%20%u0111%u1ECBnh%20n%FAt%20g%u1ECDn%20*/%0A%20%20%20%20min-width%3A%20200px%3B%0A%20%20%20%20max-width%3A%20260px%3B%0A%20%20%20%20margin%3A%2010px%20auto%3B%20%20%20/*%20c%u0103n%20gi%u1EEFa%20*/%0A%20%20%20%20width%3A%20auto%3B%0A%7D%0A%0A.share-button%20svg%2C%0A.download-button%20svg%20%7B%0A%20%20%20%20width%3A%2020px%3B%0A%20%20%20%20height%3A%2020px%3B%0A%20%20%20%20transition%3A%20transform%200.3s%20ease%3B%0A%7D%0A%0A.share-button%3Ahover%2C%0A.download-button%3Ahover%20%7B%0A%20%20%20%20transform%3A%20scale%281.05%29%3B%0A%20%20%20%20box-shadow%3A%200%2012px%2032px%20var%28--electric-blue-glow%29%3B%0A%7D%0A%0A.share-button%3Aactive%2C%0A.download-button%3Aactive%20%7B%0A%20%20%20%20transform%3A%20scale%280.98%29%3B%0A%20%20%20%20box-shadow%3A%200%204px%2016px%20var%28--electric-blue-glow%29%3B%0A%7D%0A%0A/*%20Mobile%3A%20t%u1EF1%20%u0111%u1ED9ng%20full%20chi%u1EC1u%20ngang%20*/%0A@media%20%28max-width%3A%20480px%29%20%7B%0A%20%20%20%20.share-button%2C%0A%20%20%20%20.download-button%20%7B%0A%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20max-width%3A%20100%25%3B%0A%20%20%20%20%7D%0A%7D%0A%0A%20%20%20%20%3C/style%3E%0A%3C/head%3E%0A%3Cbody%3E%0A%20%20%20%20%3Cdiv%20class%3D%22main-container%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%20id%3D%22info-card%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csection%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22qr-code-wrapper%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22qr-code-container%22%20class%3D%22qr-code-container%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22account-info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch1%3ENGUYEN%20PHU%20MANH%3C/h1%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22account-number%22%20id%3D%22accountNumber%22%3E1035717120%3C/p%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22bank-branch%22%3EVietcomBank%20H%E0%20N%u1ED9i%3C/p%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/section%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cfooter%20class%3D%22card-footer%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20id%3D%22shareButton%22%20class%3D%22share-button%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M4%2012v8a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2v-8%22%3E%3C/path%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolyline%20points%3D%2216%206%2012%202%208%206%22%3E%3C/polyline%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cline%20x1%3D%2212%22%20y1%3D%222%22%20x2%3D%2212%22%20y2%3D%2215%22%3E%3C/line%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/svg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%3EChia%20s%u1EBB%20/%20Sao%20ch%E9p%3C/span%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/button%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%21--%20N%FAt%20t%u1EA3i%20xu%u1ED1ng%20QR%20--%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20id%3D%22downloadQR%22%20class%3D%22download-button%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%u2B07%uFE0F%20T%u1EA3i%20QR%20Code%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/button%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20id%3D%22feedbackMessage%22%20class%3D%22feedback-message%22%3E%3C/p%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/footer%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%3C%21--%20%3D%3D%3D%3D%3D%3D%3D%20HI%u1EC6U%20%u1EE8NG%20TUY%u1EBET%20%3D%3D%3D%3D%3D%3D%3D%20--%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%20%20background%3A%20linear-gradient%28to%20bottom%2C%20%2300111a%2C%20%23003366%29%3B%0A%20%20%20%20%20%20height%3A%20100vh%3B%0A%20%20%20%20%20%20cursor%3A%20crosshair%3B%0A%20%20%20%20%7D%0A%20%20%20%20.snowflake%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20font-size%3A%2010px%3B%0A%20%20%20%20%20%20pointer-events%3A%20none%3B%0A%20%20%20%20%20%20opacity%3A%200.8%3B%0A%20%20%20%20%20%20animation%3A%20fall%20linear%20forwards%3B%0A%20%20%20%20%7D%0A%20%20%20%20@keyframes%20fall%20%7B%0A%20%20%20%20%20%20to%20%7B%0A%20%20%20%20%20%20%20%20transform%3A%20translateY%28100vh%29%20rotate%28360deg%29%3B%0A%20%20%20%20%20%20%20%20opacity%3A%200%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%3C/style%3E%0A%0A%20%20%3Cscript%3E%0A%20%20%20%20document.addEventListener%28%22mousemove%22%2C%20function%28e%29%20%7B%0A%20%20%20%20%20%20const%20snow%20%3D%20document.createElement%28%22div%22%29%3B%0A%20%20%20%20%20%20snow.classList.add%28%22snowflake%22%29%3B%0A%20%20%20%20%20%20snow.innerHTML%20%3D%20%22%u2744%22%3B%0A%20%20%20%20%20%20document.body.appendChild%28snow%29%3B%0A%0A%20%20%20%20%20%20snow.style.left%20%3D%20e.pageX%20+%20%22px%22%3B%0A%20%20%20%20%20%20snow.style.top%20%3D%20e.pageY%20+%20%22px%22%3B%0A%0A%20%20%20%20%20%20const%20size%20%3D%20Math.random%28%29%20*%2015%20+%2010%20+%20%22px%22%3B%0A%20%20%20%20%20%20snow.style.fontSize%20%3D%20size%3B%0A%20%20%20%20%20%20snow.style.animationDuration%20%3D%20%28Math.random%28%29%20*%203%20+%203%29%20+%20%22s%22%3B%0A%0A%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20snow.remove%28%29%3B%0A%20%20%20%20%20%20%7D%2C%206000%29%3B%0A%20%20%20%20%7D%29%3B%0A%20%20%3C/script%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cscript%20src%3D%22https%3A//cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%3E%0A%20%20%20%20document.addEventListener%28%27DOMContentLoaded%27%2C%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20function%20calculateCRC16%28data%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20let%20crc%20%3D%200xFFFF%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20%28let%20i%20%3D%200%3B%20i%20%3C%20data.length%3B%20i++%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20crc%20%5E%3D%20data.charCodeAt%28i%29%20%3C%3C%208%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20%28let%20j%20%3D%200%3B%20j%20%3C%208%3B%20j++%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20crc%20%3D%20%28crc%20%26%200x8000%29%20%3F%20%28%28crc%20%3C%3C%201%29%20%5E%200x1021%29%20%3A%20%28crc%20%3C%3C%201%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20crc%20%26%3D%200xFFFF%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20%28%270000%27%20+%20%28crc%20%26%200xFFFF%29.toString%2816%29.toUpperCase%28%29%29.slice%28-4%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20function%20stripExistingCRC%28payload%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20idx%20%3D%20payload.indexOf%28%276304%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20idx%20%3D%3D%3D%20-1%20%3F%20payload%20%3A%20payload.slice%280%2C%20idx%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20function%20generateVietQR%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20bankId%20%3D%20%27970436%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20ACC_NO%20%3D%20%271010357171200208QRIBFTTA%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20let%20payloadWithoutCRC%20%3D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2200020101021138540010A00000072701240006%22%20+%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bankId%20+%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2201%22%20+%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ACC_NO%20+%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%225303704%22%20+%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%225802VN%22%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20payloadWithoutCRC%20%3D%20stripExistingCRC%28payloadWithoutCRC%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20crc%20%3D%20calculateCRC16%28payloadWithoutCRC%20+%20%276304%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20fullPayload%20%3D%20payloadWithoutCRC%20+%20%276304%27%20+%20crc%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20qrContainer%20%3D%20document.getElementById%28%27qr-code-container%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20qrContainer.innerHTML%20%3D%20%27%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20new%20QRCode%28qrContainer%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20text%3A%20fullPayload%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20224%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20224%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20colorDark%3A%20%27%23142A7A%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20colorLight%3A%20%27%23ffffff%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20correctLevel%3A%20QRCode.CorrectLevel.M%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%29%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20fullPayload%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20const%20qrData%20%3D%20generateVietQR%28%29%3B%0A%0A%20%20%20%20%20%20%20%20//%20N%FAt%20chia%20s%u1EBB%20/%20sao%20ch%E9p%0A%20%20%20%20%20%20%20%20const%20shareButton%20%3D%20document.getElementById%28%27shareButton%27%29%3B%0A%20%20%20%20%20%20%20%20const%20feedbackMessage%20%3D%20document.getElementById%28%27feedbackMessage%27%29%3B%0A%20%20%20%20%20%20%20%20const%20accountNumber%20%3D%20document.getElementById%28%27accountNumber%27%29.innerText%3B%0A%0A%20%20%20%20%20%20%20%20shareButton.addEventListener%28%27click%27%2C%20async%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20try%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20await%20navigator.clipboard.writeText%28accountNumber%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20feedbackMessage.textContent%20%3D%20%22%uD83D%uDCCB%20%u0110%E3%20sao%20ch%E9p%20s%u1ED1%20TK%3A%20%22%20+%20accountNumber%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20%28navigator.share%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20await%20navigator.share%28%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20title%3A%20%27Th%F4ng%20tin%20chuy%u1EC3n%20kho%u1EA3n%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20text%3A%20%60S%u1ED1%20t%E0i%20kho%u1EA3n%3A%20%24%7BaccountNumber%7D%5CnNg%E2n%20h%E0ng%3A%20VietcomBank%20H%E0%20N%u1ED9i%60%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20catch%20%28err%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20feedbackMessage.textContent%20%3D%20%22%u274C%20Thao%20t%E1c%20th%u1EA5t%20b%u1EA1i%21%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20feedbackMessage.textContent%20%3D%20%27%27%2C%203000%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%0A%20%20%20%20%20%20%20%20//%20N%FAt%20t%u1EA3i%20xu%u1ED1ng%20QR%0A//%20N%FAt%20t%u1EA3i%20xu%u1ED1ng%20QR%0Adocument.getElementById%28%27downloadQR%27%29.addEventListener%28%27click%27%2C%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20const%20qrCanvas%20%3D%20document.querySelector%28%27%23qr-code-container%20canvas%27%29%3B%0A%20%20%20%20if%20%28qrCanvas%29%20%7B%0A%20%20%20%20%20%20%20%20//%20T%u1EA1o%20canvas%20m%u1EDBi%20%u0111%u1EC3%20th%EAm%20vi%u1EC1n%0A%20%20%20%20%20%20%20%20const%20borderSize%20%3D%2015%3B%20//%20c%E1ch%20l%u1EC1%20%u1EA3nh%20%u0111%u1EC3%20bo%20g%F3c%0A%20%20%20%20%20%20%20%20const%20newCanvas%20%3D%20document.createElement%28%27canvas%27%29%3B%0A%20%20%20%20%20%20%20%20const%20ctx%20%3D%20newCanvas.getContext%28%272d%27%29%3B%0A%0A%20%20%20%20%20%20%20%20//%20K%EDch%20th%u01B0%u1EDBc%20canvas%20m%u1EDBi%20%28l%u1EDBn%20h%u01A1n%20%u1EA3nh%20QR%20%u0111%u1EC3%20ch%u1EE9a%20vi%u1EC1n%29%0A%20%20%20%20%20%20%20%20newCanvas.width%20%3D%20qrCanvas.width%20+%20borderSize%20*%202%3B%0A%20%20%20%20%20%20%20%20newCanvas.height%20%3D%20qrCanvas.height%20+%20borderSize%20*%202%3B%0A%0A%20%20%20%20%20%20%20%20//%20V%u1EBD%20n%u1EC1n%20trong%20su%u1ED1t%0A%20%20%20%20%20%20%20%20ctx.clearRect%280%2C%200%2C%20newCanvas.width%2C%20newCanvas.height%29%3B%0A%0A%20%20%20%20%20%20%20%20//%20V%u1EBD%20vi%u1EC1n%20bo%20g%F3c%20m%E0u%20%u0111%u1ECF%0A%20%20%20%20%20%20%20%20const%20borderRadius%20%3D%2030%3B%20//%20%u0111%u1ED9%20bo%20g%F3c%0A%20%20%20%20%20%20%20%20ctx.lineWidth%20%3D%2050%3B%20//%20%u0111%u1ED9%20d%E0y%20vi%u1EC1n%0A%20%20%20%20%20%20%20%20ctx.strokeStyle%20%3D%20%27green%27%3B%20//%20m%E0u%20%u0111%u1ECF%0A%0A%20%20%20%20%20%20%20%20//%20Bo%20g%F3c%0A%20%20%20%20%20%20%20%20ctx.beginPath%28%29%3B%0A%20%20%20%20%20%20%20%20ctx.moveTo%28borderSize%20+%20borderRadius%2C%20borderSize%29%3B%0A%20%20%20%20%20%20%20%20ctx.lineTo%28newCanvas.width%20-%20borderSize%20-%20borderRadius%2C%20borderSize%29%3B%0A%20%20%20%20%20%20%20%20ctx.quadraticCurveTo%28newCanvas.width%20-%20borderSize%2C%20borderSize%2C%20newCanvas.width%20-%20borderSize%2C%20borderSize%20+%20borderRadius%29%3B%0A%20%20%20%20%20%20%20%20ctx.lineTo%28newCanvas.width%20-%20borderSize%2C%20newCanvas.height%20-%20borderSize%20-%20borderRadius%29%3B%0A%20%20%20%20%20%20%20%20ctx.quadraticCurveTo%28newCanvas.width%20-%20borderSize%2C%20newCanvas.height%20-%20borderSize%2C%20newCanvas.width%20-%20borderSize%20-%20borderRadius%2C%20newCanvas.height%20-%20borderSize%29%3B%0A%20%20%20%20%20%20%20%20ctx.lineTo%28borderSize%20+%20borderRadius%2C%20newCanvas.height%20-%20borderSize%29%3B%0A%20%20%20%20%20%20%20%20ctx.quadraticCurveTo%28borderSize%2C%20newCanvas.height%20-%20borderSize%2C%20borderSize%2C%20newCanvas.height%20-%20borderSize%20-%20borderRadius%29%3B%0A%20%20%20%20%20%20%20%20ctx.lineTo%28borderSize%2C%20borderSize%20+%20borderRadius%29%3B%0A%20%20%20%20%20%20%20%20ctx.quadraticCurveTo%28borderSize%2C%20borderSize%2C%20borderSize%20+%20borderRadius%2C%20borderSize%29%3B%0A%20%20%20%20%20%20%20%20ctx.stroke%28%29%3B%0A%0A%20%20%20%20%20%20%20%20//%20V%u1EBD%20%u1EA3nh%20QR%20v%E0o%20gi%u1EEFa%0A%20%20%20%20%20%20%20%20ctx.drawImage%28qrCanvas%2C%20borderSize%2C%20borderSize%29%3B%0A%0A%20%20%20%20%20%20%20%20//%20Xu%u1EA5t%20%u1EA3nh%0A%20%20%20%20%20%20%20%20const%20link%20%3D%20document.createElement%28%27a%27%29%3B%0A%20%20%20%20%20%20%20%20link.href%20%3D%20newCanvas.toDataURL%28%22image/png%22%29%3B%0A%20%20%20%20%20%20%20%20link.download%20%3D%20%22ManhKenZ_Banking.png%22%3B%0A%20%20%20%20%20%20%20%20link.click%28%29%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20feedbackMessage.textContent%20%3D%20%22%u26A0%uFE0F%20QR%20ch%u01B0a%20s%u1EB5n%20s%E0ng%21%22%3B%0A%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20feedbackMessage.textContent%20%3D%20%27%27%2C%203000%29%3B%0A%20%20%20%20%7D%0A%7D%29%3B%0A%20%20%20%20%7D%29%3B%0A%20%20%20%20%3C/script%3E%0A%3C/body%3E%0A%0A%3C/html%3E%0A"));
-//-->
-</script>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+     <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thông Tin Thanh Toán</title>
+  
+  <!-- SEO Meta -->
+  <meta name="description" content="Trang thông tin thanh toán - Ngân hàng Vietcombank, mã QR và số tài khoản.">
+
+  <!-- Open Graph (Facebook, Zalo, Messenger...) -->
+  <meta property="og:title" content="Profile Thông Tin Thanh Toán - hlisme.site">
+  <meta property="og:description" content="Trang thông tin thanh toán Vietcombank - Quét mã QR hoặc sao chép số tài khoản nhanh chóng.">
+  <meta property="og:image" content="https://i.ibb.co/8n7Jg9vy/B-a.jpg"> <!-- link ảnh thumbnail -->
+  <meta property="og:url" content="https://manhkenz.github.io">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon (icon nhỏ trên tab trình duyệt) -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/MkFwmL94/Icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-dark: #0B0F14;
+            --card-background: rgba(20, 42, 122, 0.15);
+            --indigo-glow: rgba(20, 42, 122, 0.5);
+            --electric-blue: #1E5BFF;
+            --electric-blue-glow: rgba(30, 91, 255, 0.45);
+            --text-primary: #E0E0FF;
+            --text-secondary: rgba(224, 224, 255, 0.7);
+            --border-color: rgba(30, 91, 255, 0.3);
+            --shadow-color: rgba(0, 0, 0, 0.45);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+/* PC (desktop >= 1024px) thu nhỏ lại */
+@media (min-width: 1024px) {
+    .main-container {
+        max-width: 360px;   /* gọn hơn 420px */
+        padding: 1.5rem;
+        margin-top: 100px;  /* cách nóc trang 100px */
+    }
+
+    .qr-code-wrapper {
+        max-width: 220px;   /* QR nhỏ lại, nhìn cân */
+        padding-top: 60px;
+    }
+
+    .account-info h1 {
+        font-size: 20px; /* chữ nhỏ lại để gọn */
+    }
+
+    .account-number {
+        font-size: 14px;
+    }
+
+    .share-button, .download-button {
+        font-size: 14px;
+        padding: 12px 20px;
+        min-width: 180px;
+        max-width: 220px;
+    }
+}
+
+
+/* Mobile: phóng to khung, QR, nút */
+@media (max-width: 768px) {
+    .main-container {
+        max-width: 95%;   /* gần full màn hình */
+        padding: 1.2rem;
+    }
+
+    .qr-code-wrapper {
+        max-width: 320px;  /* to hơn mặc định 256px */
+        padding: 20px;
+    }
+
+    .account-info h1 {
+        font-size: 22px; /* chữ to hơn */
+    }
+
+    .account-number {
+        font-size: 18px;
+    }
+
+    .share-button, .download-button {
+        width: 100%;        /* full chiều ngang */
+        max-width: 100%;
+        font-size: 16px;    /* chữ bự hơn */
+        padding: 16px 24px; /* nút cao hơn */
+    }
+}
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overscroll-behavior: none;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at center, var(--text-secondary) 1px, transparent 1px),
+                radial-gradient(circle at center, var(--text-secondary) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.1;
+            z-index: -2;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            left: var(--x, 50%);
+            top: var(--y, 50%);
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, var(--electric-blue-glow) 0%, transparent 60%);
+            filter: blur(100px);
+            opacity: 0.7;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .main-container {
+            padding: 2rem;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .card {
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 32px;
+            padding: 28px;
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            box-shadow: 0 24px 60px var(--shadow-color);
+            transform-style: preserve-3d;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease-out;
+            will-change: transform, box-shadow;
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+            animation: fadeInCard 0.8s 0.2s forwards cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        @keyframes fadeInCard {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .card:hover {
+             box-shadow: 0 32px 80px rgba(0,0,0,.55), 0 0 40px var(--electric-blue-glow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .bank-logos {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .bank-logo, .napas-logo {
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .vietqr-logo {
+            height: 20px;
+            object-fit: contain;
+        }
+        
+        .qr-code-wrapper {
+            background-color: #fff;
+            padding: 16px;
+            border-radius: 20px;
+            box-shadow: 0 0 32px var(--electric-blue-glow);
+            margin: 0 auto;
+            max-width: 256px;
+        }
+
+        .qr-code-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qr-code-container canvas,
+        .qr-code-container img {
+            width: 100% !important;
+            height: auto !important;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .account-info {
+            text-align: center;
+            margin-top: 24px;
+            margin-bottom: 32px;
+        }
+
+        .account-info h1 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .account-number {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 6px;
+            user-select: all;
+        }
+
+        .bank-branch {
+            font-size: 14px;
+            color: var(--text-secondary);
+            opacity: 0.8;
+            font-weight: 400;
+        }
+        
+        .card-footer {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-image: linear-gradient(90deg, #142A7A 0%, #1E5BFF 100%);
+            border: none;
+            border-radius: 999px;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            box-shadow: 0 8px 24px var(--electric-blue-glow);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .share-button svg {
+             width: 20px;
+             height: 20px;
+             transition: transform 0.3s ease;
+        }
+
+        .share-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 32px var(--electric-blue-glow);
+        }
+        
+        .share-button:hover svg {
+             transform: rotate(-10deg);
+        }
+
+        .share-button:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 16px var(--electric-blue-glow);
+        }
+
+        .feedback-message {
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            min-height: 18px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .feedback-message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Áp dụng style chung cho cả share và download */
+.share-button, .download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-image: linear-gradient(90deg, #142A7A 0%, #1E5BFF 100%);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    box-shadow: 0 8px 24px var(--electric-blue-glow);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 12px; /* tạo khoảng cách giữa các nút */
+    width: 100%; /* căn vừa khung card */
+}
+
+/* Hiệu ứng hover/active giữ nguyên */
+.share-button:hover, .download-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px var(--electric-blue-glow);
+}
+
+.share-button:active, .download-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 16px var(--electric-blue-glow);
+}
+
+/* Responsive */
+.main-container {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 1rem;
+        max-width: 95%;
+    }
+
+    .account-info h1 {
+        font-size: 20px;
+    }
+
+    .share-button, .download-button {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+}
+.share-button, .download-button {
+    width: auto;       /* thay vì 100% */
+    min-width: 200px;  /* để không bé quá */
+    text-align: center;
+    margin: 8px auto;  /* căn giữa trong card */
+    display: flex;
+    justify-content: center;
+}
+.share-button,
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-image: linear-gradient(90deg, #142A7A 0%, #1E5BFF 100%);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    box-shadow: 0 8px 24px var(--electric-blue-glow);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Mặc định nút gọn */
+    min-width: 200px;
+    max-width: 260px;
+    margin: 10px auto;   /* căn giữa */
+    width: auto;
+}
+
+.share-button svg,
+.download-button svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.share-button:hover,
+.download-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px var(--electric-blue-glow);
+}
+
+.share-button:active,
+.download-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 16px var(--electric-blue-glow);
+}
+
+/* Mobile: tự động full chiều ngang */
+@media (max-width: 480px) {
+    .share-button,
+    .download-button {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="card" id="info-card">
+            <section>
+                <div class="qr-code-wrapper">
+                    <div id="qr-code-container" class="qr-code-container"></div>
+                </div>
+                <div class="account-info">
+                    <h1>NGUYEN PHU MANH</h1>
+                    <p class="account-number" id="accountNumber">1035717120</p>
+                    <p class="bank-branch">VietcomBank Hà Nội</p>
+                </div>
+            </section>
+            <footer class="card-footer">
+                <button id="shareButton" class="share-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                    <span>Chia sẻ / Sao chép</span>
+                </button>
+
+                <!-- Nút tải xuống QR -->
+                <button id="downloadQR" class="download-button">
+                    ⬇️ Tải QR Code
+                </button>
+
+                <p id="feedbackMessage" class="feedback-message"></p>
+            </footer>
+        </div>
+         <!-- ======= HIỆU ỨNG TUYẾT ======= -->
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #00111a, #003366);
+      height: 100vh;
+      cursor: crosshair;
+    }
+    .snowflake {
+      position: fixed;
+      top: 0;
+      color: white;
+      font-size: 10px;
+      pointer-events: none;
+      opacity: 0.8;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("mousemove", function(e) {
+      const snow = document.createElement("div");
+      snow.classList.add("snowflake");
+      snow.innerHTML = "❄";
+      document.body.appendChild(snow);
+
+      snow.style.left = e.pageX + "px";
+      snow.style.top = e.pageY + "px";
+
+      const size = Math.random() * 15 + 10 + "px";
+      snow.style.fontSize = size;
+      snow.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+      setTimeout(() => {
+        snow.remove();
+      }, 6000);
+    });
+  </script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        function calculateCRC16(data) {
+            let crc = 0xFFFF;
+            for (let i = 0; i < data.length; i++) {
+                crc ^= data.charCodeAt(i) << 8;
+                for (let j = 0; j < 8; j++) {
+                    crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
+                    crc &= 0xFFFF;
+                }
+            }
+            return ('0000' + (crc & 0xFFFF).toString(16).toUpperCase()).slice(-4);
+        }
+
+        function stripExistingCRC(payload) {
+            const idx = payload.indexOf('6304');
+            return idx === -1 ? payload : payload.slice(0, idx);
+        }
+
+        function generateVietQR() {
+            const bankId = '970436';
+            const ACC_NO = '1010357171200208QRIBFTTA';
+            let payloadWithoutCRC =
+                "00020101021138540010A00000072701240006" +
+                bankId +
+                "01" +
+                ACC_NO +
+                "5303704" +
+                "5802VN";
+
+            payloadWithoutCRC = stripExistingCRC(payloadWithoutCRC);
+            const crc = calculateCRC16(payloadWithoutCRC + '6304');
+            const fullPayload = payloadWithoutCRC + '6304' + crc;
+
+            const qrContainer = document.getElementById('qr-code-container');
+            qrContainer.innerHTML = '';
+            new QRCode(qrContainer, {
+                text: fullPayload,
+                width: 224,
+                height: 224,
+                colorDark: '#142A7A',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+
+            return fullPayload;
+        }
+
+        const qrData = generateVietQR();
+
+        // Nút chia sẻ / sao chép
+        const shareButton = document.getElementById('shareButton');
+        const feedbackMessage = document.getElementById('feedbackMessage');
+        const accountNumber = document.getElementById('accountNumber').innerText;
+
+        shareButton.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(accountNumber);
+                feedbackMessage.textContent = "📋 Đã sao chép số TK: " + accountNumber;
+
+                if (navigator.share) {
+                    await navigator.share({
+                        title: 'Thông tin chuyển khoản',
+                        text: `Số tài khoản: ${accountNumber}\nNgân hàng: VietcomBank Hà Nội`,
+                    });
+                }
+            } catch (err) {
+                feedbackMessage.textContent = "❌ Thao tác thất bại!";
+            }
+
+            setTimeout(() => feedbackMessage.textContent = '', 3000);
+        });
+
+        // Nút tải xuống QR
+// Nút tải xuống QR
+document.getElementById('downloadQR').addEventListener('click', () => {
+    const qrCanvas = document.querySelector('#qr-code-container canvas');
+    if (qrCanvas) {
+        // Tạo canvas mới để thêm viền
+        const borderSize = 15; // cách lề ảnh để bo góc
+        const newCanvas = document.createElement('canvas');
+        const ctx = newCanvas.getContext('2d');
+
+        // Kích thước canvas mới (lớn hơn ảnh QR để chứa viền)
+        newCanvas.width = qrCanvas.width + borderSize * 2;
+        newCanvas.height = qrCanvas.height + borderSize * 2;
+
+        // Vẽ nền trong suốt
+        ctx.clearRect(0, 0, newCanvas.width, newCanvas.height);
+
+        // Vẽ viền bo góc màu đỏ
+        const borderRadius = 30; // độ bo góc
+        ctx.lineWidth = 50; // độ dày viền
+        ctx.strokeStyle = 'green'; // màu đỏ
+
+        // Bo góc
+        ctx.beginPath();
+        ctx.moveTo(borderSize + borderRadius, borderSize);
+        ctx.lineTo(newCanvas.width - borderSize - borderRadius, borderSize);
+        ctx.quadraticCurveTo(newCanvas.width - borderSize, borderSize, newCanvas.width - borderSize, borderSize + borderRadius);
+        ctx.lineTo(newCanvas.width - borderSize, newCanvas.height - borderSize - borderRadius);
+        ctx.quadraticCurveTo(newCanvas.width - borderSize, newCanvas.height - borderSize, newCanvas.width - borderSize - borderRadius, newCanvas.height - borderSize);
+        ctx.lineTo(borderSize + borderRadius, newCanvas.height - borderSize);
+        ctx.quadraticCurveTo(borderSize, newCanvas.height - borderSize, borderSize, newCanvas.height - borderSize - borderRadius);
+        ctx.lineTo(borderSize, borderSize + borderRadius);
+        ctx.quadraticCurveTo(borderSize, borderSize, borderSize + borderRadius, borderSize);
+        ctx.stroke();
+
+        // Vẽ ảnh QR vào giữa
+        ctx.drawImage(qrCanvas, borderSize, borderSize);
+
+        // Xuất ảnh
+        const link = document.createElement('a');
+        link.href = newCanvas.toDataURL("image/png");
+        link.download = "ManhKenZ_Banking.png";
+        link.click();
+    } else {
+        feedbackMessage.textContent = "⚠️ QR chưa sẵn sàng!";
+        setTimeout(() => feedbackMessage.textContent = '', 3000);
+    }
+});
+    });
+    </script>
+</body>
+
+</html>
