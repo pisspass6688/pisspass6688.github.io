@@ -1,170 +1,286 @@
-
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thông Tin Thanh Toán</title>
-  
-  <!-- SEO Meta -->
+
+
   <meta name="description" content="Trang thông tin thanh toán - Ngân hàng Vietcombank, mã QR và số tài khoản.">
 
-  <!-- Open Graph (Facebook, Zalo, Messenger...) -->
+
   <meta property="og:title" content="Profile Thông Tin Thanh Toán - hlisme.site">
-  <meta property="og:description" content="Trang thông tin thanh toán Vietcombank - Quét mã QR hoặc sao chép số tài khoản nhanh chóng.">
-  <meta property="og:image" content="https://i.ibb.co/8n7Jg9vy/B-a.jpg"> <!-- link ảnh thumbnail -->
+  <meta property="og:description"
+    content="Trang thông tin thanh toán Vietcombank - Quét mã QR hoặc sao chép số tài khoản nhanh chóng.">
+  <meta property="og:image" content="https://i.ibb.co/8n7Jg9vy/B-a.jpg">
   <meta property="og:url" content="https://manhkenz.github.io">
   <meta property="og:type" content="website">
 
-  <!-- Favicon (icon nhỏ trên tab trình duyệt) -->
-  <link rel="icon" type="image/png" href="https://i.ibb.co/MkFwmL94/Icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <link rel="icon" type="image/png" href="https://i.ibb.co/MkFwmL94/Icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --background-dark: #0B0F14;
-      --card-background: rgba(20, 42, 122, 0.15);
+      --background-dark: #06080d;
+      --background-aurora: radial-gradient(circle at top, #1e3c72 0%, #2a5298 45%, #0b0f14 100%);
+      --card-background: rgba(20, 42, 122, 0.18);
+      --card-glass: rgba(255, 255, 255, 0.08);
       --electric-blue: #1E5BFF;
-      --electric-blue-glow: rgba(30, 91, 255, 0.45);
-      --text-primary: #E0E0FF;
-      --text-secondary: rgba(224, 224, 255, 0.7);
-      --border-color: rgba(30, 91, 255, 0.3);
-      --shadow-color: rgba(0, 0, 0, 0.45);
+      --text-primary: #E5E9FF;
+      --text-secondary: rgba(224, 224, 255, 0.75);
+      --border-color: rgba(30, 91, 255, 0.35);
+      --neon-shadow: 0 0 20px rgba(30, 91, 255, 0.6);
+      --neon-shadow-strong: 0 0 40px rgba(30, 91, 255, 0.85);
+      --radius: 32px;
+      --transition: 0.25s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       height: 100%;
       width: 100%;
       font-family: 'Inter', sans-serif;
-      background-color: var(--background-dark);
+      background: var(--background-aurora);
       color: var(--text-primary);
+      overflow-x: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
-    /* Bố cục chứa 2 card song song */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 160%;
+      height: 160%;
+      background: conic-gradient(from 45deg,
+          rgba(30, 91, 255, 0.35),
+          rgba(128, 0, 255, 0.25),
+          rgba(0, 255, 255, 0.25),
+          rgba(30, 91, 255, 0.35));
+      animation: auroraMove 14s infinite linear;
+      filter: blur(140px);
+      z-index: -1;
+      opacity: 0.45;
+    }
+
+    @keyframes auroraMove {
+      0% {
+        transform: rotate(0deg)
+      }
+
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
     .container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
       gap: 40px;
       padding: 20px;
+      justify-content: center;
+      align-items: center;
     }
 
     .card {
-      background: var(--card-background);
-      border: 1px solid var(--border-color);
-      border-radius: 32px;
-      padding: 28px;
       width: 360px;
-      backdrop-filter: blur(16px) saturate(150%);
-      box-shadow: 0 24px 60px var(--shadow-color);
-      text-align: center;
-      animation: fadeInCard 0.8s ease forwards;
+      padding: 32px;
+      border-radius: var(--radius);
+      background: var(--card-background);
+      backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid var(--border-color);
+
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+
+      transition: var(--transition);
+      animation: cardFadeIn 1s ease forwards;
     }
 
-    @keyframes fadeInCard {
-      from { opacity: 0; transform: translateY(30px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      padding: 2px;
+      background: linear-gradient(135deg,
+          rgba(30, 91, 255, 0.8),
+          rgba(128, 0, 255, 0.6),
+          rgba(0, 255, 255, 0.7));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0.45;
+      animation: neonPulse 5s infinite linear;
+    }
+
+    @keyframes neonPulse {
+
+      0%,
+      100% {
+        opacity: 0.45
+      }
+
+      50% {
+        opacity: 0.85
+      }
+    }
+
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.94);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .qr-code-wrapper {
-      background-color: #fff;
-      padding: 16px;
-      border-radius: 20px;
-      box-shadow: 0 0 32px var(--electric-blue-glow);
-      margin: 0 auto;
-      max-width: 256px;
+      background: #fff;
+      padding: 18px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 260px;
+      margin: auto;
+
+      box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(30, 91, 255, 0.5);
+      transition: var(--transition);
+    }
+
+    .qr-code-wrapper:hover {
+      transform: scale(1.03);
+      box-shadow: var(--neon-shadow-strong);
     }
 
     .account-info h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin: 20px 0 8px;
+      font-size: 26px;
+      margin-top: 20px;
+      background: linear-gradient(to right, #4d8dff, #9bbaff);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .account-number {
-      font-size: 18px;
-      color: var(--text-secondary);
-      user-select: all;
+      margin-top: 8px;
+      font-size: 19px;
+      letter-spacing: 1px;
+      color: #c9d4ff;
     }
 
     .bank-branch {
+      margin-top: 4px;
       font-size: 14px;
-      color: var(--text-secondary);
-      opacity: 0.8;
+      opacity: 0.7;
     }
 
-    .share-button, .download-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background-image: linear-gradient(90deg, #142A7A 0%, #1E5BFF 100%);
-      border: none;
+    .share-button,
+    .download-button {
+      width: 85%;
+      margin-top: 18px;
+      padding: 14px 0;
+
       border-radius: 999px;
-      padding: 12px 24px;
+      border: none;
+
       font-size: 16px;
       font-weight: 600;
-      color: var(--text-primary);
       cursor: pointer;
-      box-shadow: 0 8px 24px var(--electric-blue-glow);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      margin-top: 16px;
-      width: 80%;
+
+      background: linear-gradient(120deg, #143585, #1E5BFF, #5c8dff);
+      box-shadow: 0 8px 20px rgba(30, 91, 255, 0.45);
+
+      color: white;
+      transition: var(--transition);
     }
 
     .share-button:hover,
     .download-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 32px var(--electric-blue-glow);
+      transform: translateY(-4px) scale(1.06);
+      box-shadow: 0 0 30px rgba(30, 91, 255, 0.8);
     }
 
     .feedback-message {
+      font-size: 13px;
+      min-height: 20px;
       margin-top: 10px;
       color: var(--text-secondary);
-      font-size: 13px;
-      min-height: 18px;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
+    a (max-width: 768px) {
+      .container@medi {
         gap: 24px;
       }
+
       .card {
-        width: 90%;
+        width: 92%;
       }
     }
 
-    /* Hiệu ứng tuyết */
     .snowflake {
       position: fixed;
-      top: 0;
-      color: white;
-      font-size: 10px;
+      top: -10px;
+      color: #fff;
+      opacity: 0.85;
       pointer-events: none;
-      opacity: 0.8;
       animation: fall linear forwards;
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
     }
 
     @keyframes fall {
-      to {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0;
       }
+    }
+
+    @keyframes shakeCard {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      20% {
+        transform: translate(-3px, 3px) rotate(-1deg);
+      }
+
+      40% {
+        transform: translate(3px, -3px) rotate(1deg);
+      }
+
+      60% {
+        transform: translate(-3px, -2px) rotate(-1deg);
+      }
+
+      80% {
+        transform: translate(2px, 3px) rotate(1deg);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+    }
+
+    .card:hover {
+      animation: shakeCard 0.35s infinite;
     }
   </style>
 </head>
@@ -172,7 +288,7 @@
 <body>
   <div class="container">
 
-    <!-- THẺ 1 -->
+
     <div class="card" id="card1">
       <div class="qr-code-wrapper">
         <div id="qr-code-1"></div>
@@ -187,7 +303,7 @@
       <p id="feedback1" class="feedback-message"></p>
     </div>
 
-    <!-- THẺ 2 -->
+
     <div class="card" id="card2">
       <div class="qr-code-wrapper">
         <div id="qr-code-2"></div>
@@ -204,7 +320,7 @@
 
   </div>
 
-  <!-- Hiệu ứng tuyết -->
+
   <script>
     document.addEventListener("mousemove", (e) => {
       const snow = document.createElement("div");
@@ -219,7 +335,7 @@
     });
   </script>
 
-  <!-- QR Generator -->
+
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script>
     function makeQR(containerId, text) {
@@ -233,11 +349,11 @@
       });
     }
 
-    // Sinh QR cho từng thẻ
     makeQR('qr-code-1', '00020101021138540010A00000072701240006970436011010357171200208QRIBFTTA53037045802VN63046451');
-    makeQR('qr-code-2', '00020101021138570010A00000072701270006970407011311279999999990208QRIBFTTA5204601153037045802VN5903TCB6005Hanoi630457f3');
+    makeQR('qr-code-2',
+      '00020101021138570010A00000072701270006970407011311279999999990208QRIBFTTA5204601153037045802VN5903TCB6005Hanoi630457f3'
+      );
 
-    // Xử lý copy / chia sẻ
     function setupCopy(buttonId, numberId, feedbackId) {
       const btn = document.getElementById(buttonId);
       const acc = document.getElementById(numberId);
@@ -262,7 +378,6 @@
     setupCopy('shareButton1', 'accountNumber1', 'feedback1');
     setupCopy('shareButton2', 'accountNumber2', 'feedback2');
 
-    // Nút tải QR
     function setupDownload(btnId, qrId, name) {
       document.getElementById(btnId).addEventListener('click', () => {
         const qrCanvas = document.querySelector(`#${qrId} canvas`);
@@ -278,4 +393,5 @@
     setupDownload('downloadQR2', 'qr-code-2', 'Thanh Toán TECH');
   </script>
 </body>
+
 </html>
