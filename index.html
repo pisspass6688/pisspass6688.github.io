@@ -1,397 +1,930 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="id">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thông Tin Thanh Toán</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tiêu đề -->
+    <title>Shop Kiên Nguyễn</title>
+    <!-- Favicon -->
+    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+    <link rel="icon" href="https://h.top4top.io/p_3686sg5yo1.png" sizes="any">
+    <link rel="icon" type="image/png" href="icon2.png">
+    <!-- Mô tả website -->
+    <meta name="description" content="Shop Kiên Nguyễn cung cấp hệ thống theo dõi tiến độ món ăn và đơn hàng nhanh chóng, minh bạch, giúp khách hàng chủ động thời gian nhận món.">
+    <!-- Từ khóa -->
+    <meta name="keywords" content="Shop Kiên Nguyễn, shop kiên nguyễn, theo dõi đơn hàng, tiến độ món ăn tại shop">
+    <!-- Tác giả -->
+    <meta name="author" content="Shop Kiên Nguyễn">
+    <meta property="og:title" content="Shop Kiên Nguyễn">
+    <meta property="og:description" content="Theo dõi tiến độ món ăn nhanh chóng, minh bạch và tiện lợi.">
+    <meta property="og:image" content="thumbnail.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tenmiencuaban.com">
+    <meta property="og:site_name" content="Shop Kiên Nguyễn">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --card: #1a1a1a;
+            --text: #ffffff;
+            --muted: #fff;
+            --primary: #ff0000;
+            --secondary: #AD4AE7;
+            --accent: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .1), transparent 30%),
+                radial-gradient(circle at 80% 10%, rgba(255, 255, 255, .08), transparent 25%),
+                radial-gradient(circle at 50% 90%, rgba(255, 255, 255, .05), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text);
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:active {
+            transform: scale(0.92);
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .menu-toggle i {
+            font-size: 20px;
+        }
+
+        .sidebar {
+            width: 270px;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 25px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+            backdrop-filter: blur(3px);
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#ffffff 0%,
+                    #ff0000 30%,
+                    #AD4AE7 60%,
+                    #ffffff 100%);
+            animation: rotate 3s linear infinite;
+            padding: 4px;
+        }
+
+        .logo {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            z-index: 1;
+            position: relative;
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .app-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .access-info {
+            font-size: 19px;
+            text-align: center;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 10px;
+            margin-top: 5px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .access-info::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                    #790606 0%,
+                    #ff00d457 30%,
+                    #af1818 60%,
+                    #910c93c9 100%);
+            border-radius: 12px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 14px;
+            transition: .3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            border-left: 4px solid var(--secondary);
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px 35px 35px;
+            transition: margin-left 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 1024px) {
+            .sidebar {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 270px;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .main-content {
+                margin-left: 0;
+                padding: 15px 20px 35px;
+            }
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .main-logo-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-logo-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#ffffff 0%,
+                    #ff0000 30%,
+                    #AD4AE7 60%,
+                    #ffffff 100%);
+            animation: rotate 3s linear infinite;
+            padding: 4px;
+        }
+
+        .main-logo {
+            width: 172px;
+            height: 172px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            z-index: 1;
+            position: relative;
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .main-app-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 45px;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .main-access-info {
+            font-size: 26px;
+            text-align: center;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin-top: 5px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .main-access-info::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                    #790606 0%,
+                    #ff00d457 30%,
+                    #af1818 60%,
+                    #910c93c9 100%);
+            border-radius: 12px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            background-size: 400% 400%;
+        }
+
+        .container {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+            margin: 0 auto 20px;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 18px 18px 0 0;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 24px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .label {
+            color: #ff0000;
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            text-align: center;
+        }
 
 
-  <meta name="description" content="Trang thông tin thanh toán - Ngân hàng Vietcombank, mã QR và số tài khoản.">
+        .label i {
+            gap: 8px;
+        }
 
+        .input-box {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
 
-  <meta property="og:title" content="Profile Thông Tin Thanh Toán - hlisme.site">
-  <meta property="og:description"
-    content="Trang thông tin thanh toán Vietcombank - Quét mã QR hoặc sao chép số tài khoản nhanh chóng.">
-  <meta property="og:image" content="https://i.ibb.co/8n7Jg9vy/B-a.jpg">
-  <meta property="og:url" content="https://manhkenz.github.io">
-  <meta property="og:type" content="website">
+        .input-box:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px var(--primary);
+            transform: translateY(-2px);
+        }
 
+        .input-box::placeholder {
+            color: #aaa;
+        }
 
-  <link rel="icon" type="image/png" href="https://i.ibb.co/MkFwmL94/Icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --background-dark: #06080d;
-      --background-aurora: radial-gradient(circle at top, #1e3c72 0%, #2a5298 45%, #0b0f14 100%);
-      --card-background: rgba(20, 42, 122, 0.18);
-      --card-glass: rgba(255, 255, 255, 0.08);
-      --electric-blue: #1E5BFF;
-      --text-primary: #E5E9FF;
-      --text-secondary: rgba(224, 224, 255, 0.75);
-      --border-color: rgba(30, 91, 255, 0.35);
-      --neon-shadow: 0 0 20px rgba(30, 91, 255, 0.6);
-      --neon-shadow-strong: 0 0 40px rgba(30, 91, 255, 0.85);
-      --radius: 32px;
-      --transition: 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-    }
+        .action-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(123, 92, 245, 0.4);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(123, 92, 245, 0.6);
+        }
 
-    html,
-    body {
-      height: 100%;
-      width: 100%;
-      font-family: 'Inter', sans-serif;
-      background: var(--background-aurora);
-      color: var(--text-primary);
-      overflow-x: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .action-btn:active {
+            transform: translateY(1px);
+        }
 
-    body::before {
-      content: "";
-      position: fixed;
-      width: 160%;
-      height: 160%;
-      background: conic-gradient(from 45deg,
-          rgba(30, 91, 255, 0.35),
-          rgba(128, 0, 255, 0.25),
-          rgba(0, 255, 255, 0.25),
-          rgba(30, 91, 255, 0.35));
-      animation: auroraMove 14s infinite linear;
-      filter: blur(140px);
-      z-index: -1;
-      opacity: 0.45;
-    }
+        .action-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-    @keyframes auroraMove {
-      0% {
-        transform: rotate(0deg)
-      }
+        .progress-container {
+            margin-top: 1.5rem;
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
 
-      100% {
-        transform: rotate(360deg)
-      }
-    }
+        .progress-bar {
+            height: 10px;
+            background: rgba(51, 65, 85, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.8rem;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      padding: 20px;
-      justify-content: center;
-      align-items: center;
-    }
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
 
-    .card {
-      width: 360px;
-      padding: 32px;
-      border-radius: var(--radius);
-      background: var(--card-background);
-      backdrop-filter: blur(18px) saturate(180%);
-      border: 1px solid var(--border-color);
+        .progress-text {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            text-align: center;
+            font-weight: 500;
+        }
 
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+        .result-section {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            max-width: 100px;
+            max-height: 500px;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+            margin: 0 auto 30px;
+            display: none;
+        }
 
-      transition: var(--transition);
-      animation: cardFadeIn 1s ease forwards;
-    }
+        .result-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            border-radius: 18px 18px 0 0;
+        }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius);
-      padding: 2px;
-      background: linear-gradient(135deg,
-          rgba(30, 91, 255, 0.8),
-          rgba(128, 0, 255, 0.6),
-          rgba(0, 255, 255, 0.7));
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-      opacity: 0.45;
-      animation: neonPulse 5s infinite linear;
-    }
+        .result-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
 
-    @keyframes neonPulse {
+        .result-title i {
+            color: var(--primary);
+            font-size: 24px;
+        }
 
-      0%,
-      100% {
-        opacity: 0.45
-      }
+        .video-info {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-      50% {
-        opacity: 0.85
-      }
-    }
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+        }
 
-    @keyframes cardFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.94);
-      }
+        .download-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
 
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
+        .download-option {
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: linear-gradient(135deg,
+                    rgba(255, 0, 0, 0.2),
+                    rgba(173, 74, 231, 0.2));
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #e2e8f0;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-    .qr-code-wrapper {
-      background: #fff;
-      padding: 18px;
-      border-radius: 24px;
-      width: 100%;
-      max-width: 260px;
-      margin: auto;
+        .download-option:hover {
+            background: linear-gradient(135deg,
+                    rgba(255, 0, 0, 0.3),
+                    rgba(173, 74, 231, 0.3));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+            border-color: var(--primary);
+        }
 
-      box-shadow:
-        0 0 20px rgba(255, 255, 255, 0.3),
-        0 0 30px rgba(30, 91, 255, 0.5);
-      transition: var(--transition);
-    }
+        .download-option i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
 
-    .qr-code-wrapper:hover {
-      transform: scale(1.03);
-      box-shadow: var(--neon-shadow-strong);
-    }
+        .download-option span {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
 
-    .account-info h1 {
-      font-size: 26px;
-      margin-top: 20px;
-      background: linear-gradient(to right, #4d8dff, #9bbaff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+        .features-section {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+            margin: 0 auto;
+        }
 
-    .account-number {
-      margin-top: 8px;
-      font-size: 19px;
-      letter-spacing: 1px;
-      color: #c9d4ff;
-    }
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 18px 18px 0 0;
+        }
 
-    .bank-branch {
-      margin-top: 4px;
-      font-size: 14px;
-      opacity: 0.7;
-    }
+        .features-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
 
-    .share-button,
-    .download-button {
-      width: 85%;
-      margin-top: 18px;
-      padding: 14px 0;
+        .features-title i {
+            color: var(--primary);
+            font-size: 24px;
+        }
 
-      border-radius: 999px;
-      border: none;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
 
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
+        .feature-card {
+            background: linear-gradient(135deg,
+                    rgba(30, 41, 59, 0.6),
+                    rgba(15, 23, 42, 0.8));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
 
-      background: linear-gradient(120deg, #143585, #1E5BFF, #5c8dff);
-      box-shadow: 0 8px 20px rgba(30, 91, 255, 0.45);
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
 
-      color: white;
-      transition: var(--transition);
-    }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .share-button:hover,
-    .download-button:hover {
-      transform: translateY(-4px) scale(1.06);
-      box-shadow: 0 0 30px rgba(30, 91, 255, 0.8);
-    }
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #e2e8f0;
+        }
 
-    .feedback-message {
-      font-size: 13px;
-      min-height: 20px;
-      margin-top: 10px;
-      color: var(--text-secondary);
-    }
+        .feature-desc {
+            color: #94a3b8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
-    a (max-width: 768px) {
-      .container@medi {
-        gap: 24px;
-      }
+        .footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            color: #64748b;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
 
-      .card {
-        width: 92%;
-      }
-    }
+        .error-message,
+        .success-message {
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            margin-top: 1rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            max-height: 100px;
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 0.5s ease;
+        }
 
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: #fff;
-      opacity: 0.85;
-      pointer-events: none;
-      animation: fall linear forwards;
-      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
-    }
+        .error-message {
+            background: rgba(239, 68, 68, 0.15);
+            border: 2px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+        }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
+        .success-message {
+            background: rgba(34, 197, 94, 0.15);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            color: #86efac;
+        }
 
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
+        .error-message.hide,
+        .success-message.hide {
+            opacity: 0;
+            max-height: 0;
+            padding: 0;
+            border: none;
+            margin: 0;
+        }
 
-    @keyframes shakeCard {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+        }
 
-      20% {
-        transform: translate(-3px, 3px) rotate(-1deg);
-      }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
-      40% {
-        transform: translate(3px, -3px) rotate(1deg);
-      }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-      60% {
-        transform: translate(-3px, -2px) rotate(-1deg);
-      }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-      80% {
-        transform: translate(2px, 3px) rotate(1deg);
-      }
+        @media (max-width: 640px) {
+            .input-group {
+                flex-direction: column;
+            }
 
-      100% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-    }
+            .download-options {
+                grid-template-columns: 1fr;
+            }
 
-    .card:hover {
-      animation: shakeCard 0.35s infinite;
-    }
-  </style>
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container,
+            .result-section,
+            .features-section {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <div class="logo-ring"></div>
+                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="logo" alt="KenZ Logo">
+            </div>
+            <div class="app-title">Menu</div>
+            <div class="access-info"><b><i>Shop Kiên Nguyễn</i></b></div>
+        </div>
 
-    <div class="card" id="card1">
-      <div class="qr-code-wrapper">
-        <div id="qr-code-1"></div>
-      </div>
-      <div class="account-info">
-        <h1>NGUYEN PHU MANH</h1>
-        <p class="account-number" id="accountNumber1">1035717120</p>
-        <p class="bank-branch">VietcomBank Hà Nội</p>
-      </div>
-      <button id="shareButton1" class="share-button">📋 Chia sẻ / Sao chép</button>
-      <button id="downloadQR1" class="download-button">⬇️ Tải QR Code</button>
-      <p id="feedback1" class="feedback-message"></p>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/tiktok" class="nav-link active"><i class="fa-solid fa-home"></i
+                        class="fas fa-tachometer-alt"></i>Home</a></li>
+            <li class="nav-item"><a href="/order" class="nav-link"><i class="fas fa-user"></i>Trạng Thái Đơn Hàng</a></li>
+            <li class="nav-item"><a href="https://zalo.me/84395904226" class="nav-link"><i
+                        class="fas fa-headset"></i>Zalo</a></li>
+            <li class="nav-item"><a href="https://fb.com/KenzDev8386" class="nav-link"><i
+                        class="fab fa-facebook"></i>Facebook</a></li>
+            <li class="nav-item"><a href="/qr-generator" class="nav-link"><i class="fas fa-qrcode"></i>QR Generator</a></li>
+        </ul>
     </div>
 
+    <div class="main-content">
+        <div class="header">
+            <div class="main-logo-container">
+                <div class="main-logo-ring"></div>
+                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="main-logo" alt="KenZ Logo">
+            </div>
+            <div>
+                <div class="main-app-title">Shop Kiên Nguyễn</div>
+                <div class="main-access-info"><b>Uy tín ~ Minh bạch ~ Chuyên nghiệp</b></div>
+            </div>
+        </div>
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-shop"></i>
+                Shop Kiên Nguyễn
+            </h2>
 
-    <div class="card" id="card2">
-      <div class="qr-code-wrapper">
-        <div id="qr-code-2"></div>
-      </div>
-      <div class="account-info">
-        <h1>NGUYEN PHU MANH</h1>
-        <p class="account-number" id="accountNumber2">1127999999999</p>
-        <p class="bank-branch">TechcomBank Hà Nội</p>
-      </div>
-      <button id="shareButton2" class="share-button">📋 Chia sẻ / Sao chép</button>
-      <button id="downloadQR2" class="download-button">⬇️ Tải QR Code</button>
-      <p id="feedback2" class="feedback-message"></p>
+            <div class="input-group">
+                <div class="label">
+                    <p class="label">Xin chân thành cảm ơn Quý khách đã tin tưởng và lựa chọn sử dụng dịch vụ của Shop Kiên Nguyễn.<br>Sự hài lòng và niềm tin của Quý khách chính là động lực để chúng tôi không ngừng hoàn thiện mỗi ngày.<br>Với phương châm kinh doanh đặt chất lượng và uy tín lên hàng đầu, Shop Kiên Nguyễn cam kết mang đến những sản phẩm thực phẩm rõ ràng nguồn gốc, đảm bảo an toàn và luôn giữ được độ tươi ngon khi đến tay khách hàng.Chúng tôi hiểu rằng mỗi sự lựa chọn của Quý khách đều đi kèm với sự kỳ vọng, vì vậy shop luôn chú trọng từ khâu chọn lọc sản phẩm, kiểm tra chất lượng cho đến phục vụ tận tâm.<br>Không chỉ mong muốn trở thành nơi mua sắm đáng tin cậy, Shop Kiên Nguyễn còn hy vọng được đồng hành lâu dài, góp phần mang đến những bữa ăn chất lượng và sự an tâm cho gia đình bạn.<br>Mọi góp ý và phản hồi từ Quý khách đều vô cùng quý giá để chúng tôi tiếp tục cải thiện dịch vụ.<br>Shop Kiên Nguyễn cam kết sẽ luôn giữ vững sự chân thành, minh bạch trong kinh doanh và nỗ lực nâng cao trải nghiệm khách hàng.<br>Một lần nữa, xin cảm ơn Quý khách đã tin tưởng ~ sự ủng hộ của Quý khách chính là nền tảng giúp chúng tôi phát triển bền vững và phục vụ ngày càng tốt hơn.</p>
+                </div>
+            </div>
+
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Mempersiapkan download...</div>
+            </div>
+            <div class="error-message hide" id="error-message"></div>
+            <div class="success-message hide" id="success-message"></div>
+        </div>
+
+        <div class="features-section">
+            <h3 class="features-title">
+                <i class="fas fa-sliders-h"></i>
+                Ưu điểm nổi bật
+            </h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="feature-title">Theo dõi thời gian thực</h4>
+                    <p class="feature-desc">
+                        Dễ dàng biết món ăn đang được chuẩn bị đến đâu mà không cần liên hệ hay chờ đợi.
+                    </p>
+                </div>
+            
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Kiểm tra nhanh chóng</h4>
+                    <p class="feature-desc">
+                        Chỉ với vài thao tác, bạn có thể xem ngay trạng thái đơn hàng mọi lúc, mọi nơi.
+                    </p>
+                </div>
+            
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h4 class="feature-title">Chủ động thời gian nhận món</h4>
+                    <p class="feature-desc">
+                        Cập nhật rõ ràng giúp bạn sắp xếp thời gian hợp lý và hạn chế chờ đợi.
+                    </p>
+                </div>
+            
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Minh bạch & đáng tin cậy</h4>
+                    <p class="feature-desc">
+                        Mọi trạng thái đều được hiển thị rõ ràng, mang lại sự an tâm khi đặt món tại Shop Kiên Nguyễn.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2026 - Shop Kiên Nguyễn
+        </div>
     </div>
-
-  </div>
-
-
-  <script>
-    document.addEventListener("mousemove", (e) => {
-      const snow = document.createElement("div");
-      snow.classList.add("snowflake");
-      snow.innerHTML = "❄";
-      document.body.appendChild(snow);
-      snow.style.left = e.pageX + "px";
-      snow.style.top = e.pageY + "px";
-      snow.style.fontSize = Math.random() * 15 + 10 + "px";
-      snow.style.animationDuration = (Math.random() * 3 + 3) + "s";
-      setTimeout(() => snow.remove(), 6000);
-    });
-  </script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <script>
-    function makeQR(containerId, text) {
-      new QRCode(document.getElementById(containerId), {
-        text: text,
-        width: 224,
-        height: 224,
-        colorDark: '#142A7A',
-        colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.M
-      });
-    }
-
-    makeQR('qr-code-1', '00020101021138540010A00000072701240006970436011010357171200208QRIBFTTA53037045802VN63046451');
-    makeQR('qr-code-2',
-      '00020101021138570010A00000072701270006970407011311279999999990208QRIBFTTA5204601153037045802VN5903TCB6005Hanoi630457f3'
-      );
-
-    function setupCopy(buttonId, numberId, feedbackId) {
-      const btn = document.getElementById(buttonId);
-      const acc = document.getElementById(numberId);
-      const fb = document.getElementById(feedbackId);
-      btn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(acc.innerText);
-          fb.textContent = "✅ Đã sao chép số TK: " + acc.innerText;
-          if (navigator.share) {
-            await navigator.share({
-              title: 'Thông tin chuyển khoản',
-              text: `Số tài khoản: ${acc.innerText}`
-            });
-          }
-        } catch {
-          fb.textContent = "❌ Không thể sao chép!";
-        }
-        setTimeout(() => fb.textContent = '', 3000);
-      });
-    }
-
-    setupCopy('shareButton1', 'accountNumber1', 'feedback1');
-    setupCopy('shareButton2', 'accountNumber2', 'feedback2');
-
-    function setupDownload(btnId, qrId, name) {
-      document.getElementById(btnId).addEventListener('click', () => {
-        const qrCanvas = document.querySelector(`#${qrId} canvas`);
-        if (!qrCanvas) return;
-        const link = document.createElement('a');
-        link.href = qrCanvas.toDataURL("image/png");
-        link.download = `ManhKenZ_${name}_QR.png`;
-        link.click();
-      });
-    }
-
-    setupDownload('downloadQR1', 'qr-code-1', 'Thanh Toán VCB');
-    setupDownload('downloadQR2', 'qr-code-2', 'Thanh Toán TECH');
-  </script>
 </body>
-
 </html>
