@@ -33,10 +33,10 @@
             --bg: #000000;
             --card: #1a1a1a;
             --text: #ffffff;
-            --muted: #fff;
+            --muted: #ffffff;
             --primary: #ff0000;
-            --secondary: #AD4AE7;
-            --accent: #666666;
+            --secondary: #8412c6a3;
+            --accent: #a812a1;
         }
 
         * {
@@ -55,6 +55,14 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            cursor: url("cursor/cute-mouse.cur"), auto;
+        }
+        a,
+        button,
+        .menu-toggle,
+        .nav-link,
+        [onclick]{
+            cursor: url("click-mouse.cur"), auto;
         }
 
         .menu-toggle {
@@ -70,7 +78,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            
             z-index: 2000;
             position: fixed;
             backdrop-filter: blur(12px);
@@ -128,10 +136,10 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: conic-gradient(#ffffff 0%,
+            background: conic-gradient(#b812125a 0%,
                     #ff0000 30%,
-                    #AD4AE7 60%,
-                    #ffffff 100%);
+                    #4f0f74a6 60%,
+                    #9f09097b 100%);
             animation: rotate 3s linear infinite;
             padding: 4px;
         }
@@ -295,10 +303,10 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: conic-gradient(#ffffff 0%,
+            background: conic-gradient(#b812125a 0%,
                     #ff0000 30%,
-                    #AD4AE7 60%,
-                    #ffffff 100%);
+                    #4f0f74a6 60%,
+                    #9f09097b 100%);
             animation: rotate 3s linear infinite;
             padding: 4px;
         }
@@ -449,7 +457,7 @@
             color: white;
             font-weight: bold;
             font-size: 16px;
-            cursor: pointer;
+            
             margin-top: 15px;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(123, 92, 245, 0.4);
@@ -588,7 +596,7 @@
             align-items: center;
             gap: 0.8rem;
             transition: all 0.3s ease;
-            cursor: pointer;
+            
         }
 
         .download-option:hover {
@@ -661,13 +669,13 @@
 
         .feature-card {
             background: linear-gradient(135deg,
-                    rgba(30, 41, 59, 0.6),
-                    rgba(15, 23, 42, 0.8));
+                    rgba(173, 6, 6, 0.059),
+                    rgba(173, 6, 6, 0.349));
             border-radius: 20px;
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.4s ease;
-            cursor: pointer;
+            
         }
 
         .feature-card:hover {
@@ -790,6 +798,7 @@
                 padding: 10px;
             }
         }
+
     </style>
 </head>
 
