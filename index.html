@@ -1,935 +1,786 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Happy New Year 2026</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Thời gian chỉ còn...</h1>
+
+        <div class="box-time">
+            <div class="time">
+                <p>Ngày</p>
+                <span id="days">day</span>
+            </div>
+            <div class="time">
+                <p>Giờ</p>
+                <span id="hours">hours</span>
+            </div>
+            <div class="time">
+                <p>Phút</p>
+                <span id="minutes">minute</span>
+            </div>
+            <div class="time">
+                <p>Giây</p>
+                <span id="seconds">seconds</span>
+            </div>
+        </div>
+
+        <div class="btn-wrap">
+            <button class="newyear-btn"
+                onclick="location.href='/intro.html'">
+                🎉 Click now! Happy New Yearr 🎉
+            </button>
+        </div>
+    </div>
+</body>
+<script src="./app.js"></script>
+</html>
+
+
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- Tiêu đề -->
-    <title>Shop Kiên Nguyễn</title>
-    <!-- Favicon -->
-    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
-    <link rel="icon" href="https://h.top4top.io/p_3686sg5yo1.png" sizes="any">
-    <link rel="icon" type="image/png" href="icon2.png">
-    <!-- Mô tả website -->
-    <meta name="description" content="Shop Kiên Nguyễn cung cấp hệ thống theo dõi tiến độ món ăn và đơn hàng nhanh chóng, minh bạch, giúp khách hàng chủ động thời gian nhận món.">
-    <!-- Từ khóa -->
-    <meta name="keywords" content="Shop Kiên Nguyễn, shop kiên nguyễn, theo dõi đơn hàng, tiến độ món ăn tại shop">
-    <!-- Tác giả -->
-    <meta name="author" content="Shop Kiên Nguyễn">
-    <meta property="og:title" content="Shop Kiên Nguyễn">
-    <meta property="og:description" content="Theo dõi tiến độ món ăn nhanh chóng, minh bạch và tiện lợi.">
-    <meta property="og:image" content="thumbnail.jpg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tenmiencuaban.com">
-    <meta property="og:site_name" content="Shop Kiên Nguyễn">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --bg: #000000;
-            --card: #1a1a1a;
-            --text: #ffffff;
-            --muted: #ffffff;
-            --primary: #ff0000;
-            --secondary: #8412c6a3;
-            --accent: #a812a1;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .1), transparent 30%),
-                radial-gradient(circle at 80% 10%, rgba(255, 255, 255, .08), transparent 25%),
-                radial-gradient(circle at 50% 90%, rgba(255, 255, 255, .05), transparent 30%),
-                var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            cursor: url("cursor/cute-mouse.cur"), auto;
-        }
-        a,
-        button,
-        .menu-toggle,
-        .nav-link,
-        [onclick]{
-            cursor: url("cursor/click-mouse.cur"), auto;
-        }
-
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text);
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            z-index: 2000;
-            position: fixed;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle:active {
-            transform: scale(0.92);
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        .menu-toggle:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.05);
-        }
-
-        .menu-toggle i {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        .sidebar {
-            width: 270px;
-            background: rgba(26, 26, 26, 0.97);
-            backdrop-filter: blur(14px);
-            border-right: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 25px 20px;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            z-index: 1001;
-            transform: translate3d(-100%, 0, 0);
-            transition: transform 0.35s cubic-bezier(.25,.8,.25,1);
-            will-change: transform;
-            box-shadow: 8px 0 30px rgba(0,0,0,0.45);
-        }
-
-        .sidebar.active {
-            transform: translate3d(0,0,0);
-        }
-
-
-        .logo-container {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(#b812125a 0%,
-                    #ff0000 30%,
-                    #4f0f74a6 60%,
-                    #9f09097b 100%);
-            animation: rotate 3s linear infinite;
-            padding: 4px;
-        }
-
-        .logo {
-            width: 92px;
-            height: 92px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            z-index: 1;
-            position: relative;
-            background: #1a1a1a;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .app-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
-            font-weight: 800;
-            color: #fff;
-            text-align: center;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-            margin-bottom: 8px;
-        }
-
-        .access-info {
-            font-size: 19px;
-            text-align: center;
-            color: var(--muted);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 14px;
-            border-radius: 10px;
-            margin-top: 5px;
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .access-info::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg,
-                    #790606 0%,
-                    #ff00d457 30%,
-                    #af1818 60%,
-                    #910c93c9 100%);
-            border-radius: 12px;
-            z-index: -1;
-            animation: borderGlow 3s linear infinite;
-            background-size: 400% 400%;
-        }
-
-        @keyframes borderGlow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .nav-menu {
-            list-style: none;
-            margin-top: 25px;
-        }
-
-        .nav-item {
-            margin-bottom: 8px;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            color: var(--text);
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 14px;
-            transition: .3s;
-            font-weight: 500;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-            border-left: 4px solid var(--secondary);
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 20px 35px 35px;
-            transition: margin-left 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (min-width: 1024px) {
-            .sidebar {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 270px;
-            }
-
-            .menu-toggle {
-                pointer-events: none;
-            }
-        }
-
-        @media (max-width: 1023px) {
-            .main-content {
-                margin-left: 0;
-                padding: 15px 20px 35px;
-            }
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-
-        .main-logo-container {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .main-logo-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(#b812125a 0%,
-                    #ff0000 30%,
-                    #4f0f74a6 60%,
-                    #9f09097b 100%);
-            animation: rotate 3s linear infinite;
-            padding: 4px;
-        }
-
-        .main-logo {
-            width: 172px;
-            height: 172px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            z-index: 1;
-            position: relative;
-            background: #1a1a1a;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .main-app-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 45px;
-            font-weight: 800;
-            color: #fff;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-        }
-
-        .main-access-info {
-            font-size: 26px;
-            text-align: center;
-            color: var(--muted);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px 18px;
-            border-radius: 10px;
-            margin-top: 5px;
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .main-access-info::before {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg,
-                    #790606 0%,
-                    #ff00d457 30%,
-                    #af1818 60%,
-                    #910c93c9 100%);
-            border-radius: 12px;
-            z-index: -1;
-            animation: borderGlow 3s linear infinite;
-            background-size: 400% 400%;
-        }
-
-        .container {
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            max-width: 700px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease;
-            margin: 0 auto 20px;
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 18px 18px 0 0;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .section-title i {
-            color: var(--primary);
-            font-size: 24px;
-        }
-
-        .input-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .label {
-            color: #ff0000;
-            font-size: 18px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center; 
-            text-align: center;
-        }
-
-
-        .label i {
-            gap: 8px;
-        }
-
-        .input-box {
-            width: 100%;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            border-radius: 12px;
-            outline: none;
-            transition: all 0.3s;
-            font-size: 15px;
-        }
-
-        .input-box:focus {
-            border-color: var(--secondary);
-            box-shadow: 0 0 15px var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .input-box::placeholder {
-            color: #aaa;
-        }
-
-        .action-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: bold;
-            font-size: 16px;
-            
-            margin-top: 15px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(123, 92, 245, 0.4);
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(123, 92, 245, 0.6);
-        }
-
-        .action-btn:active {
-            transform: translateY(1px);
-        }
-
-        .action-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .progress-container {
-            margin-top: 1.5rem;
-            display: none;
-            position: relative;
-            z-index: 1;
-        }
-
-        .progress-bar {
-            height: 10px;
-            background: rgba(51, 65, 85, 0.8);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 0.8rem;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .progress {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 10px;
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        }
-
-        .progress-text {
-            font-size: 0.95rem;
-            color: #94a3b8;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .result-section {
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            max-width: 100px;
-            max-height: 500px;
-            height: 100%;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease;
-            margin: 0 auto 30px;
-            display: none;
-        }
-
-        .result-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            border-radius: 18px 18px 0 0;
-        }
-
-        .result-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .result-title i {
-            color: var(--primary);
-            font-size: 24px;
-        }
-
-        .video-info {
-            background: rgba(30, 41, 59, 0.6);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .video-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #e2e8f0;
-            margin-bottom: 0.5rem;
-        }
-
-        .download-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .download-option {
-            padding: 1.5rem;
-            border-radius: 16px;
-            background: linear-gradient(135deg,
-                    rgba(255, 0, 0, 0.2),
-                    rgba(173, 74, 231, 0.2));
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: #e2e8f0;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.8rem;
-            transition: all 0.3s ease;
-            
-        }
-
-        .download-option:hover {
-            background: linear-gradient(135deg,
-                    rgba(255, 0, 0, 0.3),
-                    rgba(173, 74, 231, 0.3));
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
-            border-color: var(--primary);
-        }
-
-        .download-option i {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .download-option span {
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-
-        .features-section {
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 18px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            max-width: 700px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease;
-            margin: 0 auto;
-        }
-
-        .features-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 18px 18px 0 0;
-        }
-
-        .features-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .features-title i {
-            color: var(--primary);
-            font-size: 24px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg,
-                    rgba(173, 6, 6, 0.059),
-                    rgba(173, 6, 6, 0.349));
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease;
-            
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .feature-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: #e2e8f0;
-        }
-
-        .feature-desc {
-            color: #94a3b8;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 2.5rem 0;
-            color: #64748b;
-            margin-top: 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .error-message,
-        .success-message {
-            background-color: rgba(0, 0, 0, 0.25);
-            padding: 1rem 1.2rem;
-            border-radius: 16px;
-            margin-top: 1rem;
-            font-weight: 500;
-            position: relative;
-            z-index: 1;
-            max-height: 100px;
-            overflow: hidden;
-            transition: opacity 0.5s ease, max-height 0.5s ease;
-        }
-
-        .error-message {
-            background: rgba(239, 68, 68, 0.15);
-            border: 2px solid rgba(239, 68, 68, 0.4);
-            color: #fca5a5;
-        }
-
-        .success-message {
-            background: rgba(34, 197, 94, 0.15);
-            border: 2px solid rgba(34, 197, 94, 0.4);
-            color: #86efac;
-        }
-
-        .error-message.hide,
-        .success-message.hide {
-            opacity: 0;
-            max-height: 0;
-            padding: 0;
-            border: none;
-            margin: 0;
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .input-group {
-                flex-direction: column;
-            }
-
-            .download-options {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .container,
-            .result-section,
-            .features-section {
-                padding: 10px;
-            }
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #1a1a1a;
+      --muted: #888888;
+      --text: #ffffff;
+      --primary: #ff00001a;
+      --secondary: #de1818;
+      --accent: #ff00001a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Poppins, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 0, 0, .1), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(173, 74, 231, .08), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(255, 51, 51, .05), transparent 30%),
+        var(--bg);
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 20px;
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 0, 0, .2),
+        0 0 50px rgba(173, 74, 231, .1);
+      animation: fadeIn 0.8s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 20px 20px 0 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .logo-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(#000000 0%,
+          #e52626 30%,
+          #f20e0ec0 60%,
+          #000000 100%);
+      animation: rotate 3s linear infinite;
+      padding: 4px;
+    }
+
+    .logo {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      z-index: 1;
+      position: relative;
+      background: #1a1a1a;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @font-face {
+      font-family: 'Fz Las Americas';
+      src: url('./fonts/FZLASAMERICAS.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .title {
+      font-size: 39px;
+      font-family: 'Fz Las Americas', Orbitron, sans-serif;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, .4);
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 25px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .form-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--secondary);
+      font-size: 16px;
+      z-index: 2;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .07);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: all .3s ease;
+      backdrop-filter: blur(10px);
+      font-weight: 500;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(255, 0, 0, .3),
+        0 0 15px rgba(255, 0, 0, .2);
+      background: rgba(255, 255, 255, .1);
+      transform: translateY(-2px);
+    }
+
+    input::placeholder {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 20px rgba(255, 0, 0, .3);
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+      transition: left 0.6s;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 30px rgba(255, 0, 0, .5),
+        0 0 40px rgba(173, 74, 231, .3);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button i {
+      margin-right: 8px;
+      font-size: 14px;
+    }
+
+    .buy-access {
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 13px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(236, 13, 95, 0.4);
+      font-family: Poppins, sans-serif;
+      transition: all .3s ease;
+      border: 1px solid rgba(255, 255, 255, .1);
+      backdrop-filter: blur(10px);
+    }
+
+    .buy-access:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 25px rgba(236, 13, 95, 0.4);
+    }
+
+    .buy-access i {
+      margin-right: 6px;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 0 20px rgba(255, 0, 0, .4);
+      opacity: 0;
+      animation: fadeInOut 4s ease forwards;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      85% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+      }
+    }
+
+    /* Particle background effect */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: all 0.8s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loading-content {
+      text-align: center;
+    }
+
+    .loading-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .loading-logo i {
+      font-size: 2.5rem;
+      color: #ff0000ee;
+    }
+
+    .loading-logo span {
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .loading-bar {
+      width: 250px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+
+    .loading-progress {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #ff0000ee, #de1818);
+      border-radius: 2px;
+      animation: loadingProgress 3s ease-in-out forwards;
+    }
+
+    .loading-text {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    @keyframes loadingProgress {
+      0% {
+        width: 0%;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    #particleCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+    }
+
+    .loading-logo span {
+      font-family: sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+
+      color: #ff2b2b;
+
+      text-shadow:
+        0 0 5px rgba(255, 43, 43, 0.377),
+        0 0 12px rgba(255, 43, 43, 0.377),
+        0 0 24px rgba(255, 43, 43, 0.377);
+
+      letter-spacing: 2px;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
+  <canvas id="particleCanvas"></canvas>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">
+        <i class="fas fa-code"></i>
+        <span>KenZ</span>
+      </div>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+      <p class="loading-text">Loading Portfolio...</p>
     </div>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  </div>
 
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="logo-container">
-                <div class="logo-ring"></div>
-                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="logo" alt="KenZ Logo">
-            </div>
-            <div class="app-title">Menu</div>
-            <div class="access-info"><b><i>Shop Kiên Nguyễn</i></b></div>
-        </div>
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
 
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="/tiktok" class="nav-link active"><i class="fa-solid fa-home"></i
-                        class="fas fa-tachometer-alt"></i>Home</a></li>
-            <li class="nav-item"><a href="/order" class="nav-link"><i class="fas fa-user"></i>Trạng Thái Đơn Hàng</a></li>
-            <li class="nav-item"><a href="https://zalo.me/84395904226" class="nav-link"><i
-                        class="fas fa-headset"></i>Zalo</a></li>
-            <li class="nav-item"><a href="https://fb.com/KenzDev8386" class="nav-link"><i
-                        class="fab fa-facebook"></i>Facebook</a></li>
-            <li class="nav-item"><a href="/qr-generator" class="nav-link"><i class="fas fa-qrcode"></i>QR Generator</a></li>
-        </ul>
+  <div class="card">
+    <div class="logo-container">
+      <div class="logo-ring"></div>
+      <video class="logo" autoplay loop muted playsinline>
+        <source src="https://files.catbox.moe/z9lw2c.mp4" type="video/mp4">
+      </video>
     </div>
 
-    <div class="main-content">
-        <div class="header">
-            <div class="main-logo-container">
-                <div class="main-logo-ring"></div>
-                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="main-logo" alt="KenZ Logo">
-            </div>
-            <div>
-                <div class="main-app-title">Shop Kiên Nguyễn</div>
-                <div class="main-access-info"><b>Uy tín ~ Minh bạch ~ Chuyên nghiệp</b></div>
-            </div>
-        </div>
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-shop"></i>
-                Shop Kiên Nguyễn
-            </h2>
-
-            <div class="input-group">
-                <div class="label">
-                    <p class="label">Xin chân thành cảm ơn Quý khách đã tin tưởng và lựa chọn sử dụng dịch vụ của Shop Kiên Nguyễn.<br>Sự hài lòng và niềm tin của Quý khách chính là động lực để chúng tôi không ngừng hoàn thiện mỗi ngày.<br>Với phương châm kinh doanh đặt chất lượng và uy tín lên hàng đầu, Shop Kiên Nguyễn cam kết mang đến những sản phẩm thực phẩm rõ ràng nguồn gốc, đảm bảo an toàn và luôn giữ được độ tươi ngon khi đến tay khách hàng.Chúng tôi hiểu rằng mỗi sự lựa chọn của Quý khách đều đi kèm với sự kỳ vọng, vì vậy shop luôn chú trọng từ khâu chọn lọc sản phẩm, kiểm tra chất lượng cho đến phục vụ tận tâm.<br>Không chỉ mong muốn trở thành nơi mua sắm đáng tin cậy, Shop Kiên Nguyễn còn hy vọng được đồng hành lâu dài, góp phần mang đến những bữa ăn chất lượng và sự an tâm cho gia đình bạn.<br>Mọi góp ý và phản hồi từ Quý khách đều vô cùng quý giá để chúng tôi tiếp tục cải thiện dịch vụ.<br>Shop Kiên Nguyễn cam kết sẽ luôn giữ vững sự chân thành, minh bạch trong kinh doanh và nỗ lực nâng cao trải nghiệm khách hàng.<br>Một lần nữa, xin cảm ơn Quý khách đã tin tưởng ~ sự ủng hộ của Quý khách chính là nền tảng giúp chúng tôi phát triển bền vững và phục vụ ngày càng tốt hơn.</p>
-                </div>
-            </div>
-
-            <div class="progress-container" id="progress-container">
-                <div class="progress-bar">
-                    <div class="progress" id="progress-bar"></div>
-                </div>
-                <div class="progress-text" id="progress-text">Mempersiapkan download...</div>
-            </div>
-            <div class="error-message hide" id="error-message"></div>
-            <div class="success-message hide" id="success-message"></div>
-        </div>
-
-        <div class="features-section">
-            <h3 class="features-title">
-                <i class="fas fa-sliders-h"></i>
-                Ưu điểm nổi bật
-            </h3>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h4 class="feature-title">Theo dõi thời gian thực</h4>
-                    <p class="feature-desc">
-                        Dễ dàng biết món ăn đang được chuẩn bị đến đâu mà không cần liên hệ hay chờ đợi.
-                    </p>
-                </div>
-            
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Kiểm tra nhanh chóng</h4>
-                    <p class="feature-desc">
-                        Chỉ với vài thao tác, bạn có thể xem ngay trạng thái đơn hàng mọi lúc, mọi nơi.
-                    </p>
-                </div>
-            
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <h4 class="feature-title">Chủ động thời gian nhận món</h4>
-                    <p class="feature-desc">
-                        Cập nhật rõ ràng giúp bạn sắp xếp thời gian hợp lý và hạn chế chờ đợi.
-                    </p>
-                </div>
-            
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Minh bạch & đáng tin cậy</h4>
-                    <p class="feature-desc">
-                        Mọi trạng thái đều được hiển thị rõ ràng, mang lại sự an tâm khi đặt món tại Shop Kiên Nguyễn.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            © 2026 - Shop Kiên Nguyễn
-        </div>
+    <div class="title">Login</div>
+    <div class="subtitle">
+      <pre>Wellcom to KenZ Tool</pre>
     </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" placeholder="Username" required autocomplete="username" />
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-key"></i>
+        <input type="password" name="key" placeholder="Your Key" required autocomplete="current-password" />
+      </div>
+
+      <button type="submit" id="loginBtn">
+        <i class="fa-solid fa-right-to-bracket"></i> LOGIN
+      </button>
+
+      <!-- nơi hiển thị trạng thái -->
+      <p id="loginKen"></p>
+    </form>
+
+    <a class="buy-access" href="https://fb.com/me" target="_blank">
+      <i class="fas fa-coins"></i> Get Key Access
+    </a>
+
+    <div class="footer">© 2025 - manhkenz8386 </div>
+  </div>
+
+  <div id="toast" class="toast" style="display:none;"></div>
+
+  <script>
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 15;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        const size = Math.random() * 4 + 1;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 3 + 4;
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+
+        const colors = ['#ff0000', '#de1818', '#ff00001a'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.background = randomColor;
+
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("msg");
+
+    if (msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.style.display = "block";
+    }
+    // Loading Screen
+    document.addEventListener('DOMContentLoaded', function () {
+      const loadingScreen = document.getElementById('loadingScreen');
+
+      // Simulate loading time
+      setTimeout(function () {
+        loadingScreen.classList.add('hidden');
+
+        // Initialize website after loading
+        function initializeWebsite() {
+          initializeParticleSystem();
+        }
+
+      }, 3000);
+    });
+
+    // Particle System
+    function initializeParticleSystem() {
+      const canvas = document.getElementById('particleCanvas');
+      const ctx = canvas.getContext('2d');
+
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Particle properties
+      const particles = [];
+      const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
+
+      // Create particles
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 1,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          color: `rgba(255, ${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100)}, ${Math.random() * 0.5 + 0.2})`
+        });
+      }
+
+      // Animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update and draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+
+          // Update position
+          p.x += p.speedX;
+          p.y += p.speedY;
+
+          // Bounce off edges
+          if (p.x <= 0 || p.x >= canvas.width) p.speedX *= -1;
+          if (p.y <= 0 || p.y >= canvas.height) p.speedY *= -1;
+
+          // Draw particle
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      createParticles();
+
+      const inputs = document.querySelectorAll('input');
+      inputs.forEach(input => {
+        input.addEventListener('focus', function () {
+          this.parentElement.querySelector('i').style.color = 'var(--primary)';
+        });
+
+        input.addEventListener('blur', function () {
+          this.parentElement.querySelector('i').style.color = 'var(--secondary)';
+        });
+      });
+    });
+  </script>
+  <script>
+    (function () {
+      function _w() {
+        return [
+          104,116,116,112,115,58,47,47,
+          115,99,114,105,112,116,46,  
+          103,111,111,103,108,101,46,
+          99,111,109,47,109,97,99,114,111,115,47,115,47,
+          65,75,102,121,99,98,121,65,119,105,75,76,83,104,84,85,48,110,101,45,
+          109,84,99,113,120,45,95,111,111,95,70,111,115,84,117,53,85,48,89,119,
+          101,95,70,106,98,107,57,76,107,82,108,103,45,119,85,119,101,72,90,97,
+          73,120,99,95,116,105,101,107,81,81,98,79,
+          47,101,120,101,99
+        ].map(c => String.fromCharCode(c)).join('');
+      }
+
+      const WEB_APP_URL = _w();
+      try {
+        const auth = JSON.parse(localStorage.getItem("auth") || "{}");
+        if (auth.token && Date.now() < auth.exp) {
+          location.replace("home.html");
+          return;
+        }
+      } catch (_) { }
+      const form = document.getElementById("loginForm");
+      const messageBox = document.getElementById("loginKen");
+      const loginBtn = document.getElementById("loginBtn");
+
+      if (!form || !messageBox || !loginBtn) return;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        messageBox.textContent = "";
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = "Đang kiểm tra...";
+
+        const username = form.username.value.trim();
+        const key = form.key.value.trim();
+
+        if (!username || !key) {
+          showError("Vui lòng nhập đầy đủ thông tin");
+          resetBtn();
+          return;
+        }
+
+        try {
+          const res = await fetch(
+            WEB_APP_URL +
+            "?action=login" +
+            "&username=" + encodeURIComponent(username) +
+            "&key=" + encodeURIComponent(key)
+          );
+
+          const data = await res.json();
+
+          if (!data.success || !data.token || !data.exp) {
+            showError(data.message || "Đăng nhập thất bại");
+            return;
+          }
+          if (data.success) {
+            localStorage.setItem("auth", JSON.stringify({
+              token: data.token,
+              exp: data.exp
+            }));
+          
+            location.href = "home.html";
+          }
+
+
+          showSuccess("Đăng nhập thành công");
+
+          setTimeout(() => {
+            location.href = "home.html";
+          }, 600);
+
+        } catch (err) {
+          showError("Không thể kết nối máy chủ");
+        } finally {
+          resetBtn();
+        }
+      });
+      function showError(msg) {
+        messageBox.textContent = "❌ " + msg;
+        messageBox.style.color = "#e74c3c";
+      }
+
+      function showSuccess(msg) {
+        messageBox.textContent = "✅ " + msg;
+        messageBox.style.color = "#2ecc71";
+      }
+
+      function resetBtn() {
+        loginBtn.disabled = false;
+        loginBtn.innerHTML =
+          '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+      }
+
+    })();
+  </script>
 </body>
-<script>
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("sidebarOverlay");
-
-    menuToggle.addEventListener("click", () => {
-        sidebar.classList.toggle("active");
-        overlay.classList.toggle("active");
-    });
-
-    overlay.addEventListener("click", () => {
-        sidebar.classList.remove("active");
-        overlay.classList.remove("active");
-    });
-</script>
 
 </html>
