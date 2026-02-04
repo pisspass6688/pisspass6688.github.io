@@ -813,6 +813,21 @@
             transform:translateY(-5px);
         }
 
+        .feature-card{
+            animation: fadeIn .4s ease;
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(10px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
     </style>
 </head>
 
@@ -873,45 +888,7 @@
                 Đơn hàng 
             </h3>
             <div class="features-grid" id="orders">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-receipt"></i>
-                    </div>
-                    <h4 class="feature-title">Mã đơn hàng</h4>
-                    <p class="feature-desc">
-                        Tên khách
-                    </p>
-                </div>
-            
-                <!-- <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Kiểm tra nhanh chóng</h4>
-                    <p class="feature-desc">
-                        Chỉ với vài thao tác, bạn có thể xem ngay trạng thái đơn hàng mọi lúc, mọi nơi.
-                    </p>
-                </div>
-            
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <h4 class="feature-title">Chủ động thời gian nhận món</h4>
-                    <p class="feature-desc">
-                        Cập nhật rõ ràng giúp bạn sắp xếp thời gian hợp lý và hạn chế chờ đợi.
-                    </p>
-                </div>
-             -->
-                <!-- <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Minh bạch & đáng tin cậy</h4>
-                    <p class="feature-desc">
-                        Mọi trạng thái đều được hiển thị rõ ràng, mang lại sự an tâm khi đặt món tại Shop Kiên Nguyễn.
-                    </p>
-                </div> -->
+                <!-- Đơn hàng sẽ được tải ở đây -->
             </div>
         </div>
 
@@ -963,7 +940,7 @@
     updateStatus();
     setInterval(updateStatus, 1000);
 
-        const menuToggle = document.getElementById("menuToggle");
+    const menuToggle = document.getElementById("menuToggle");
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("sidebarOverlay");
 
@@ -976,5 +953,51 @@
         sidebar.classList.remove("active");
         overlay.classList.remove("active");
     });
+
+    const API_URL = "https://script.google.com/macros/s/AKfycbzO8wXl68Au6pxP_SA7MYIOG_SskVBsaFLhRAEHhGsewG39kttbXAl4_15Mks2iJd8pbw/exec";
+
+    async function loadOrders() {
+      try {
+        const res = await fetch(API_URL);
+        if(!res.ok){
+            throw new Error("API lỗi");
+        }
+
+        const orders = await res.json();
+        const container = document.getElementById("orders");
+        container.innerHTML = "";
+        if(!orders.length){
+            container.innerHTML = "<p class='label'>Chưa có đơn hàng</p>";
+            return;
+        }
+
+        orders.reverse().forEach(o => {
+
+          const orderCode = o["order_code"] || "Đang tạo...";
+          const customer = o["customer_name"] || "Khách lẻ";
+
+          container.innerHTML += `
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-receipt"></i>
+              </div>
+              <h4 class="feature-title">${orderCode}</h4>
+              <p class="feature-desc">${customer}</p>
+            </div>
+          `;
+        });
+
+      } catch(err){
+
+        console.error(err);
+
+        document.getElementById("orders").innerHTML =
+          "<p style='color:red'>Không tải được đơn hàng</p>";
+      }
+    }
+
+    loadOrders();
+    setInterval(loadOrders, 5000);
+
 </script>
 </html>
