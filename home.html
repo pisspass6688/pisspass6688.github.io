@@ -12,7 +12,8 @@
     <link rel="icon" href="https://h.top4top.io/p_3686sg5yo1.png" sizes="any">
     <link rel="icon" type="image/png" href="icon2.png">
     <!-- Mô tả website -->
-    <meta name="description" content="Shop Kiên Nguyễn cung cấp hệ thống theo dõi tiến độ món ăn và đơn hàng nhanh chóng, minh bạch, giúp khách hàng chủ động thời gian nhận món.">
+    <meta name="description"
+        content="Shop Kiên Nguyễn cung cấp hệ thống theo dõi tiến độ món ăn và đơn hàng nhanh chóng, minh bạch, giúp khách hàng chủ động thời gian nhận món.">
     <!-- Từ khóa -->
     <meta name="keywords" content="Shop Kiên Nguyễn, shop kiên nguyễn, theo dõi đơn hàng, tiến độ món ăn tại shop">
     <!-- Tác giả -->
@@ -57,11 +58,12 @@
             position: relative;
             cursor: url("cursor/cute-mouse.cur"), auto;
         }
+
         a,
         button,
         .menu-toggle,
         .nav-link,
-        [onclick]{
+        [onclick] {
             cursor: url("cursor/click-mouse.cur"), auto;
         }
 
@@ -78,7 +80,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
             z-index: 2000;
             position: fixed;
             backdrop-filter: blur(12px);
@@ -111,13 +113,13 @@
             overflow-y: auto;
             z-index: 1001;
             transform: translate3d(-100%, 0, 0);
-            transition: transform 0.35s cubic-bezier(.25,.8,.25,1);
+            transition: transform 0.35s cubic-bezier(.25, .8, .25, 1);
             will-change: transform;
-            box-shadow: 8px 0 30px rgba(0,0,0,0.45);
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.45);
         }
 
         .sidebar.active {
-            transform: translate3d(0,0,0);
+            transform: translate3d(0, 0, 0);
         }
 
 
@@ -417,7 +419,7 @@
             font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center; 
+            justify-content: center;
             text-align: center;
         }
 
@@ -457,7 +459,7 @@
             color: white;
             font-weight: bold;
             font-size: 16px;
-            
+
             margin-top: 15px;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(123, 92, 245, 0.4);
@@ -596,7 +598,7 @@
             align-items: center;
             gap: 0.8rem;
             transition: all 0.3s ease;
-            
+
         }
 
         .download-option:hover {
@@ -675,7 +677,7 @@
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.4s ease;
-            
+
         }
 
         .feature-card:hover {
@@ -798,11 +800,126 @@
                 padding: 10px;
             }
         }
+        .loading-screen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          transition: all 0.8s ease;
+        }
 
+        .loading-screen.hidden {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+
+        .loading-content {
+          text-align: center;
+        }
+
+        .loading-logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          margin-bottom: 30px;
+        }
+
+        .loading-logo i {
+          font-size: 2.5rem;
+          color: #ff0000ee;
+        }
+
+        .loading-logo span {
+          font-size: 1.8rem;
+          color: #fff;
+          font-weight: 700;
+        }
+
+        .loading-bar {
+          width: 250px;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 2px;
+          overflow: hidden;
+          margin: 0 auto 20px;
+        }
+
+        .loading-progress {
+          width: 0;
+          height: 100%;
+          background: linear-gradient(90deg, #ff0000ee, #de1818);
+          border-radius: 2px;
+          animation: loadingProgress 3s ease-in-out forwards;
+        }
+
+        .loading-text {
+          color: #ccc;
+          font-size: 1rem;
+        }
+
+        @keyframes loadingProgress {
+          0% {
+            width: 0%;
+          }
+
+          100% {
+            width: 100%;
+          }
+        }
+
+        #particleCanvas {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .loading-logo span {
+          font-family: sans-serif;
+          font-size: 32px;
+          font-weight: 600;
+
+          color: #ff2b2b;
+
+          text-shadow:
+            0 0 5px rgba(255, 43, 43, 0.377),
+            0 0 12px rgba(255, 43, 43, 0.377),
+            0 0 24px rgba(255, 43, 43, 0.377);
+
+          letter-spacing: 2px;
+        }
     </style>
 </head>
 
 <body>
+    <canvas id="particleCanvas"></canvas>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-shop"></i>
+                <span>Shop Kiên Nguyễn</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
     <div class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
     </div>
@@ -812,7 +929,7 @@
         <div class="sidebar-header">
             <div class="logo-container">
                 <div class="logo-ring"></div>
-                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="logo" alt="KenZ Logo">
+                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="logo" alt="Shop Kiên Nguyễn Logo">
             </div>
             <div class="app-title">Menu</div>
             <div class="access-info"><b><i>Shop Kiên Nguyễn</i></b></div>
@@ -821,12 +938,14 @@
         <ul class="nav-menu">
             <li class="nav-item"><a href="/tiktok" class="nav-link active"><i class="fa-solid fa-home"></i
                         class="fas fa-tachometer-alt"></i>Home</a></li>
-            <li class="nav-item"><a href="/order" class="nav-link"><i class="fas fa-user"></i>Trạng Thái Đơn Hàng</a></li>
+            <li class="nav-item"><a href="/order" class="nav-link"><i class="fas fa-user"></i>Trạng Thái Đơn Hàng</a>
+            </li>
             <li class="nav-item"><a href="https://zalo.me/84395904226" class="nav-link"><i
                         class="fas fa-headset"></i>Zalo</a></li>
-            <li class="nav-item"><a href="https://fb.com/KenzDev8386" class="nav-link"><i
+            <li class="nav-item"><a href="https://fb.com/Shop Kiên NguyễnDev8386" class="nav-link"><i
                         class="fab fa-facebook"></i>Facebook</a></li>
-            <li class="nav-item"><a href="/qr-generator" class="nav-link"><i class="fas fa-qrcode"></i>QR Generator</a></li>
+            <li class="nav-item"><a href="/qr-generator" class="nav-link"><i class="fas fa-qrcode"></i>QR Generator</a>
+            </li>
         </ul>
     </div>
 
@@ -834,7 +953,7 @@
         <div class="header">
             <div class="main-logo-container">
                 <div class="main-logo-ring"></div>
-                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="main-logo" alt="KenZ Logo">
+                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="main-logo" alt="Shop Kiên Nguyễn Logo">
             </div>
             <div>
                 <div class="main-app-title">Shop Kiên Nguyễn</div>
@@ -849,7 +968,19 @@
 
             <div class="input-group">
                 <div class="label">
-                    <p class="label">Xin chân thành cảm ơn Quý khách đã tin tưởng và lựa chọn sử dụng dịch vụ của Shop Kiên Nguyễn.<br>Sự hài lòng và niềm tin của Quý khách chính là động lực để chúng tôi không ngừng hoàn thiện mỗi ngày.<br>Với phương châm kinh doanh đặt chất lượng và uy tín lên hàng đầu, Shop Kiên Nguyễn cam kết mang đến những sản phẩm thực phẩm rõ ràng nguồn gốc, đảm bảo an toàn và luôn giữ được độ tươi ngon khi đến tay khách hàng.Chúng tôi hiểu rằng mỗi sự lựa chọn của Quý khách đều đi kèm với sự kỳ vọng, vì vậy shop luôn chú trọng từ khâu chọn lọc sản phẩm, kiểm tra chất lượng cho đến phục vụ tận tâm.<br>Không chỉ mong muốn trở thành nơi mua sắm đáng tin cậy, Shop Kiên Nguyễn còn hy vọng được đồng hành lâu dài, góp phần mang đến những bữa ăn chất lượng và sự an tâm cho gia đình bạn.<br>Mọi góp ý và phản hồi từ Quý khách đều vô cùng quý giá để chúng tôi tiếp tục cải thiện dịch vụ.<br>Shop Kiên Nguyễn cam kết sẽ luôn giữ vững sự chân thành, minh bạch trong kinh doanh và nỗ lực nâng cao trải nghiệm khách hàng.<br>Một lần nữa, xin cảm ơn Quý khách đã tin tưởng ~ sự ủng hộ của Quý khách chính là nền tảng giúp chúng tôi phát triển bền vững và phục vụ ngày càng tốt hơn.</p>
+                    <p class="label">Xin chân thành cảm ơn Quý khách đã tin tưởng và lựa chọn sử dụng dịch vụ của Shop
+                        Kiên Nguyễn.<br>Sự hài lòng và niềm tin của Quý khách chính là động lực để chúng tôi không ngừng
+                        hoàn thiện mỗi ngày.<br>Với phương châm kinh doanh đặt chất lượng và uy tín lên hàng đầu, Shop
+                        Kiên Nguyễn cam kết mang đến những sản phẩm thực phẩm rõ ràng nguồn gốc, đảm bảo an toàn và luôn
+                        giữ được độ tươi ngon khi đến tay khách hàng.Chúng tôi hiểu rằng mỗi sự lựa chọn của Quý khách
+                        đều đi kèm với sự kỳ vọng, vì vậy shop luôn chú trọng từ khâu chọn lọc sản phẩm, kiểm tra chất
+                        lượng cho đến phục vụ tận tâm.<br>Không chỉ mong muốn trở thành nơi mua sắm đáng tin cậy, Shop
+                        Kiên Nguyễn còn hy vọng được đồng hành lâu dài, góp phần mang đến những bữa ăn chất lượng và sự
+                        an tâm cho gia đình bạn.<br>Mọi góp ý và phản hồi từ Quý khách đều vô cùng quý giá để chúng tôi
+                        tiếp tục cải thiện dịch vụ.<br>Shop Kiên Nguyễn cam kết sẽ luôn giữ vững sự chân thành, minh
+                        bạch trong kinh doanh và nỗ lực nâng cao trải nghiệm khách hàng.<br>Một lần nữa, xin cảm ơn Quý
+                        khách đã tin tưởng ~ sự ủng hộ của Quý khách chính là nền tảng giúp chúng tôi phát triển bền
+                        vững và phục vụ ngày càng tốt hơn.</p>
                 </div>
             </div>
 
@@ -878,7 +1009,7 @@
                         Dễ dàng biết món ăn đang được chuẩn bị đến đâu mà không cần liên hệ hay chờ đợi.
                     </p>
                 </div>
-            
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-mobile-alt"></i>
@@ -888,7 +1019,7 @@
                         Chỉ với vài thao tác, bạn có thể xem ngay trạng thái đơn hàng mọi lúc, mọi nơi.
                     </p>
                 </div>
-            
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bell"></i>
@@ -898,7 +1029,7 @@
                         Cập nhật rõ ràng giúp bạn sắp xếp thời gian hợp lý và hạn chế chờ đợi.
                     </p>
                 </div>
-            
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -916,6 +1047,60 @@
         </div>
     </div>
 </body>
+  <script>
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 15;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        const size = Math.random() * 4 + 1;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 3 + 4;
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+
+        const colors = ['#ff0000', '#de1818', '#ff00001a'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.background = randomColor;
+
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("msg");
+
+    if (msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.style.display = "block";
+    }
+    // Loading Screen
+    document.addEventListener('DOMContentLoaded', function () {
+      const loadingScreen = document.getElementById('loadingScreen');
+
+      // Simulate loading time
+      setTimeout(function () {
+        loadingScreen.classList.add('hidden');
+
+        // Initialize website after loading
+        function initializeWebsite() {
+          initializeParticleSystem();
+        }
+
+      }, 3000);
+    });
+  </script>
 <script>
     const menuToggle = document.getElementById("menuToggle");
     const sidebar = document.getElementById("sidebar");
@@ -931,4 +1116,6 @@
         overlay.classList.remove("active");
     });
 </script>
+
+
 </html>
