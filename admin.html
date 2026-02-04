@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Tiêu đề -->
+  <title>Shop Kiên Nguyễn</title>
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+  <link rel="icon" href="https://h.top4top.io/p_3686sg5yo1.png" sizes="any">
+  <link rel="icon" type="image/png" href="icon2.png">
+  <!-- Mô tả website -->
+  <meta name="description"
+    content="Shop Kiên Nguyễn cung cấp hệ thống theo dõi tiến độ món ăn và đơn hàng nhanh chóng, minh bạch, giúp khách hàng chủ động thời gian nhận món.">
+  <!-- Từ khóa -->
+  <meta name="keywords" content="Shop Kiên Nguyễn, shop kiên nguyễn, theo dõi đơn hàng, tiến độ món ăn tại shop">
+  <!-- Tác giả -->
+  <meta name="author" content="Shop Kiên Nguyễn">
+  <meta property="og:title" content="Shop Kiên Nguyễn">
+  <meta property="og:description" content="Theo dõi tiến độ món ăn nhanh chóng, minh bạch và tiện lợi.">
+  <meta property="og:image" content="https://h.top4top.io/p_3686sg5yo1.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pisspass6688.github.io">
+  <meta property="og:site_name" content="Shop Kiên Nguyễn">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #1a1a1a;
+      --muted: #888888;
+      --text: #ffffff;
+      --primary: #ff00001a;
+      --secondary: #ce0f0f;
+      --accent: #ff00001a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Poppins, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 0, 0, .1), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(173, 74, 231, .08), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(255, 51, 51, .05), transparent 30%),
+        var(--bg);
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 20px;
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 0, 0, .2),
+        0 0 50px rgba(173, 74, 231, .1);
+      animation: fadeIn 0.8s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 20px 20px 0 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .logo-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(#000000 0%,
+          #e52626 30%,
+          #f20e0ec0 60%,
+          #000000 100%);
+      animation: rotate 3s linear infinite;
+      padding: 4px;
+    }
+
+    .logo {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      z-index: 1;
+      position: relative;
+      background: #1a1a1a;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @font-face {
+      font-family: 'Fz Las Americas';
+      src: url('./fonts/FZLASAMERICAS.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .title {
+      font-size: 39px;
+      font-family: 'Fz Las Americas', Orbitron, sans-serif;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, .4);
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 25px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .form-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--secondary);
+      font-size: 16px;
+      z-index: 2;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .07);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: all .3s ease;
+      backdrop-filter: blur(10px);
+      font-weight: 500;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(255, 0, 0, .3),
+        0 0 15px rgba(255, 0, 0, .2);
+      background: rgba(255, 255, 255, .1);
+      transform: translateY(-2px);
+    }
+
+    input::placeholder {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 20px rgba(255, 0, 0, .3);
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+      transition: left 0.6s;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 30px rgba(255, 0, 0, .5),
+        0 0 40px rgba(173, 74, 231, .3);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button i {
+      margin-right: 8px;
+      font-size: 14px;
+    }
+
+    .buy-access {
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 13px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(236, 13, 95, 0.4);
+      font-family: Poppins, sans-serif;
+      transition: all .3s ease;
+      border: 1px solid rgba(255, 255, 255, .1);
+      backdrop-filter: blur(10px);
+    }
+
+    .buy-access:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 25px rgba(236, 13, 95, 0.4);
+    }
+
+    .buy-access i {
+      margin-right: 6px;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 0 20px rgba(255, 0, 0, .4);
+      opacity: 0;
+      animation: fadeInOut 4s ease forwards;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      85% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+      }
+    }
+
+    /* Particle background effect */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: all 0.8s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loading-content {
+      text-align: center;
+    }
+
+    .loading-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .loading-logo i {
+      font-size: 2.5rem;
+      color: #ff0000ee;
+    }
+
+    .loading-logo span {
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .loading-bar {
+      width: 250px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+
+    .loading-progress {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #ff0000ee, #de1818);
+      border-radius: 2px;
+      animation: loadingProgress 3s ease-in-out forwards;
+    }
+
+    .loading-text {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    @keyframes loadingProgress {
+      0% {
+        width: 0%;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    #particleCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+    }
+
+    .loading-logo span {
+      font-family: sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+
+      color: #ff2b2b;
+
+      text-shadow:
+        0 0 5px rgba(255, 43, 43, 0.377),
+        0 0 12px rgba(255, 43, 43, 0.377),
+        0 0 24px rgba(255, 43, 43, 0.377);
+
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="particleCanvas"></canvas>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">
+        <i class="fas fa-code"></i>
+        <span>KenZ</span>
+      </div>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+      <p class="loading-text">Loading...</p>
+    </div>
+  </div>
+
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+
+  <div class="card">
+    <div class="logo-container">
+      <div class="logo-ring"></div>
+      <video class="logo" autoplay loop muted playsinline>
+        <source src="https://files.catbox.moe/z9lw2c.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="title">Login</div>
+    <div class="subtitle">
+      <pre>~ Welcome Admin ~</pre>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" placeholder="Username" required autocomplete="username" />
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-key"></i>
+        <input type="password" name="key" placeholder="Your Key" required autocomplete="current-password" />
+      </div>
+
+      <button type="submit" id="loginBtn">
+        <i class="fa-solid fa-right-to-bracket"></i> LOGIN
+      </button>
+
+      <!-- nơi hiển thị trạng thái -->
+      <p id="loginKen"></p>
+    </form>
+
+    <a class="buy-access" href="https://fb.com/me" target="_blank">
+      <i class="fas fa-coins"></i> Get Key Access
+    </a>
+
+    <div class="footer">© 2026 - Shop Kiên Nguyễn </div>
+  </div>
+
+  <div id="toast" class="toast" style="display:none;"></div>
+
+  <script>
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 15;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        const size = Math.random() * 4 + 1;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 3 + 4;
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+
+        const colors = ['#ff0000', '#de1818', '#ff00001a'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.background = randomColor;
+
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("msg");
+
+    if (msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.style.display = "block";
+    }
+    // Loading Screen
+    document.addEventListener('DOMContentLoaded', function () {
+      const loadingScreen = document.getElementById('loadingScreen');
+
+      // Simulate loading time
+      setTimeout(function () {
+        loadingScreen.classList.add('hidden');
+
+        // Initialize website after loading
+        function initializeWebsite() {
+          initializeParticleSystem();
+        }
+
+      }, 3000);
+    });
+
+    // Particle System
+    function initializeParticleSystem() {
+      const canvas = document.getElementById('particleCanvas');
+      const ctx = canvas.getContext('2d');
+
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Particle properties
+      const particles = [];
+      const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
+
+      // Create particles
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 1,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          color: `rgba(255, ${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100)}, ${Math.random() * 0.5 + 0.2})`
+        });
+      }
+
+      // Animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update and draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+
+          // Update position
+          p.x += p.speedX;
+          p.y += p.speedY;
+
+          // Bounce off edges
+          if (p.x <= 0 || p.x >= canvas.width) p.speedX *= -1;
+          if (p.y <= 0 || p.y >= canvas.height) p.speedY *= -1;
+
+          // Draw particle
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      createParticles();
+
+      const inputs = document.querySelectorAll('input');
+      inputs.forEach(input => {
+        input.addEventListener('focus', function () {
+          this.parentElement.querySelector('i').style.color = 'var(--primary)';
+        });
+
+        input.addEventListener('blur', function () {
+          this.parentElement.querySelector('i').style.color = 'var(--secondary)';
+        });
+      });
+    });
+  </script>
+  <script>
+    (function () {
+      function _w() {
+        return [
+          104,116,116,112,115,58,47,47,
+          115,99,114,105,112,116,46,103,111,111,103,108,101,46,99,111,109,47,
+          109,97,99,114,111,115,47,115,47,
+          65,75,102,121,99,98,122,82,88,45,111,101,118,79,77,70,54,67,70,67,56,
+          83,104,102,88,88,51,67,76,54,70,72,95,106,112,72,57,112,120,108,107,106,
+          55,76,100,66,56,113,78,80,49,107,80,55,73,82,81,79,71,122,99,86,118,49,
+          101,95,98,57,76,86,109,76,47,101,120,101,99
+        ].map(c => String.fromCharCode(c)).join('');
+      }
+    
+      const WEB_APP_URL = _w();
+      try {
+        const auth = JSON.parse(localStorage.getItem("auth") || "{}");
+        if (auth.token && Date.now() < auth.exp) {
+          location.replace("myhome.html");
+          return;
+        }
+      } catch (_) { }
+      const form = document.getElementById("loginForm");
+      const messageBox = document.getElementById("loginKen");
+      const loginBtn = document.getElementById("loginBtn");
+
+      if (!form || !messageBox || !loginBtn) return;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        messageBox.textContent = "";
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = "Đang kiểm tra...";
+
+        const username = form.username.value.trim();
+        const key = form.key.value.trim();
+
+        if (!username || !key) {
+          showError("Vui lòng nhập đầy đủ thông tin");
+          resetBtn();
+          return;
+        }
+
+        try {
+          const res = await fetch(
+            WEB_APP_URL +
+            "?action=login" +
+            "&username=" + encodeURIComponent(username) +
+            "&key=" + encodeURIComponent(key)
+          );
+
+          const data = await res.json();
+
+          if (!data.success || !data.token || !data.exp) {
+            showError(data.message || "Đăng nhập thất bại");
+            return;
+          }
+          if (data.success) {
+            localStorage.setItem("auth", JSON.stringify({
+              token: data.token,
+              exp: data.exp
+            }));
+
+            location.href = "admin.html";
+          }
+
+          showSuccess("Đăng nhập thành công");
+
+          setTimeout(() => {
+            location.href = "myhome.html";
+          }, 600);
+
+        } catch (err) {
+          showError("Không thể kết nối máy chủ");
+        } finally {
+          resetBtn();
+        }
+      });
+      function showError(msg) {
+        messageBox.textContent = "❌ " + msg;
+        messageBox.style.color = "#e74c3c";
+      }
+
+      function showSuccess(msg) {
+        messageBox.textContent = "✅ " + msg;
+        messageBox.style.color = "#2ecc71";
+      }
+
+      function resetBtn() {
+        loginBtn.disabled = false;
+        loginBtn.innerHTML =
+          '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+      }
+
+    })();
+  </script>
+</body>
+
+</html>
