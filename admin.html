@@ -655,102 +655,101 @@
     });
   </script>
   <script>
-    (function () {
-      function _w() {
-        return [
-          104,116,116,112,115,58,47,47,
-          115,99,114,105,112,116,46,103,111,111,103,108,101,46,99,111,109,47,
-          109,97,99,114,111,115,47,115,47,
-          65,75,102,121,99,98,122,82,88,45,111,101,118,79,77,70,54,67,70,67,56,
-          83,104,102,88,88,51,67,76,54,70,72,95,106,112,72,57,112,120,108,107,106,
-          55,76,100,66,56,113,78,80,49,107,80,55,73,82,81,79,71,122,99,86,118,49,
-          101,95,98,57,76,86,109,76,47,101,120,101,99
-        ].map(c => String.fromCharCode(c)).join('');
-      }
-    
-      const WEB_APP_URL = _w();
-      try {
-        const auth = JSON.parse(localStorage.getItem("auth") || "{}");
-        if (auth.token && Date.now() < auth.exp) {
-          location.replace("myhome.html");
-          return;
-        }
-      } catch (_) { }
-      const form = document.getElementById("loginForm");
-      const messageBox = document.getElementById("loginKen");
-      const loginBtn = document.getElementById("loginBtn");
+(function () {
 
-      if (!form || !messageBox || !loginBtn) return;
+  // 🔐 Che URL Web App
+  function _w() {
+    return [
+      104,116,116,112,115,58,47,47,
+      115,99,114,105,112,116,46,103,111,111,103,108,101,46,99,111,109,47,
+      109,97,99,114,111,115,47,115,47,
+      65,75,102,121,99,98,122,82,88,45,111,101,118,79,77,70,54,67,70,67,56,
+      83,104,102,88,88,51,67,76,54,70,72,95,106,112,72,57,112,120,108,107,106,
+      55,76,100,66,56,113,78,80,49,107,80,55,73,82,81,79,71,122,99,86,118,49,
+      101,95,98,57,76,86,109,76,47,101,120,101,99
+    ].map(c => String.fromCharCode(c)).join('');
+  }
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+  const WEB_APP_URL = _w();
 
-        messageBox.textContent = "";
-        loginBtn.disabled = true;
-        loginBtn.innerHTML = "Đang kiểm tra...";
+  // 🔁 Nếu đã login → đá thẳng sang upload
+  if (sessionStorage.getItem("isAdminLogin") === "true") {
+    location.replace("upload.html");
+    return;
+  }
 
-        const username = form.username.value.trim();
-        const key = form.key.value.trim();
+  const form = document.getElementById("loginForm");
+  const messageBox = document.getElementById("loginKen");
+  const loginBtn = document.getElementById("loginBtn");
 
-        if (!username || !key) {
-          showError("Vui lòng nhập đầy đủ thông tin");
-          resetBtn();
-          return;
-        }
+  if (!form || !messageBox || !loginBtn) return;
 
-        try {
-          const res = await fetch(
-            WEB_APP_URL +
-            "?action=login" +
-            "&username=" + encodeURIComponent(username) +
-            "&key=" + encodeURIComponent(key)
-          );
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-          const data = await res.json();
+    messageBox.textContent = "";
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = "Đang kiểm tra...";
 
-          if (!data.success || !data.token || !data.exp) {
-            showError(data.message || "Đăng nhập thất bại");
-            return;
-          }
-          if (data.success) {
-            localStorage.setItem("auth", JSON.stringify({
-              token: data.token,
-              exp: data.exp
-            }));
+    const username = form.username.value.trim();
+    const key = form.key.value.trim();
 
-            location.href = "admin.html";
-          }
+    if (!username || !key) {
+      showError("Vui lòng nhập đầy đủ thông tin");
+      resetBtn();
+      return;
+    }
 
-          showSuccess("Đăng nhập thành công");
+    try {
+      const res = await fetch(
+        WEB_APP_URL +
+        "?action=login" +
+        "&username=" + encodeURIComponent(username) +
+        "&key=" + encodeURIComponent(key)
+      );
 
-          setTimeout(() => {
-            location.href = "myhome.html";
-          }, 600);
+      const data = await res.json();
 
-        } catch (err) {
-          showError("Không thể kết nối máy chủ");
-        } finally {
-          resetBtn();
-        }
-      });
-      function showError(msg) {
-        messageBox.textContent = "❌ " + msg;
-        messageBox.style.color = "#e74c3c";
+      if (!data.success) {
+        showError(data.message || "Đăng nhập thất bại");
+        resetBtn();
+        return;
       }
 
-      function showSuccess(msg) {
-        messageBox.textContent = "✅ " + msg;
-        messageBox.style.color = "#2ecc71";
-      }
+      // ✅ LOGIN OK → lưu SESSION
+      sessionStorage.setItem("isAdminLogin", "true");
+      sessionStorage.setItem("admin_login_time", Date.now());
 
-      function resetBtn() {
-        loginBtn.disabled = false;
-        loginBtn.innerHTML =
-          '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
-      }
+      showSuccess("Đăng nhập thành công");
 
-    })();
-  </script>
+      setTimeout(() => {
+        location.replace("upload.html");
+      }, 500);
+
+    } catch (err) {
+      showError("Không thể kết nối máy chủ");
+      resetBtn();
+    }
+  });
+
+  function showError(msg) {
+    messageBox.textContent = "❌ " + msg;
+    messageBox.style.color = "#e74c3c";
+  }
+
+  function showSuccess(msg) {
+    messageBox.textContent = "✅ " + msg;
+    messageBox.style.color = "#2ecc71";
+  }
+
+  function resetBtn() {
+    loginBtn.disabled = false;
+    loginBtn.innerHTML =
+      '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+  }
+
+})();
+</script>
 </body>
 
 </html>
