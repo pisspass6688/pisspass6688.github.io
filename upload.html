@@ -1,3 +1,9 @@
+<script>
+if (sessionStorage.getItem("isAdminLogin") !== "true") {
+  location.replace("admin.html");
+}
+</script>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -1306,6 +1312,5 @@
         });
     });
 </script>
-
 
 </html>
