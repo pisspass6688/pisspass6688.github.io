@@ -67,7 +67,7 @@
       border-radius: 20px;
       padding: 30px 25px;
       width: 100%;
-      max-width: 480px;
+      max-width: 430px;
       text-align: center;
       box-shadow: 0 0 30px rgba(255, 0, 0, .2),
         0 0 50px rgba(173, 74, 231, .1);
@@ -530,32 +530,32 @@
 
   <!-- Particle Background -->
   <div class="particles" id="particles"></div>
-
   <div class="card">
     <div class="title">Welcome to Shop<br>Kiên Nguyễn</div>
     <div class="subtitle">
       <pre>~ Bạn là ai? ~</pre>
     </div>
-
     <form id="buttonForm">
-        <div class="features-section">
-            <div class="features-grid">
-                <div class="feature-card" onclick="location.href='/home'">
-                    <h4 class="feature-title">Khách Hàng</h4>
-                    <p class="feature-desc">
-                        Xin chào Quý Khách!
-                    </p>
-                </div>
-                <div class="feature-card" onclick="location.href='/admin'">
-                    <h4 class="feature-title">Quản Trị Viên</h4>
-                    <p class="feature-desc">
-                        Xin chào Quý Quản Trị Viên!
-                    </p>
+      <div class="features-section">
+        <div class="features-grid">
+          <div class="feature-card" onclick="location.href='/home'">
+            <h4 class="feature-title">Khách Hàng</h4>
+            <p class="feature-desc">Xin chào Quý Khách!</p>
+          </div>
+          <div class="feature-card" onclick="location.href='/admin'">
+            <h4 class="feature-title">Quản Trị Viên</h4>
+            <p class="feature-desc">Xin chào Quý Quản Trị Viên!</p>
+          </div>
+        </div>
+      </div>
     </form>
-  </div>
 
-  <div id="toast" class="toast" style="display:none;"></div></div>
- <div class="footer">© 2026 - Shop Kiên Nguyễn </div>
+    <div id="toast" class="toast" style="display:none;"></div>
+
+    <!-- footer nằm TRONG card -->
+    <div class="footer">© 2026 - Shop Kiên Nguyễn</div>
+</div>
+
   <script>
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
