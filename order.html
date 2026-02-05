@@ -12,7 +12,8 @@
     <link rel="icon" href="https://h.top4top.io/p_3686sg5yo1.png" sizes="any">
     <link rel="icon" type="image/png" href="icon2.png">
     <!-- Mô tả website -->
-    <meta name="description" content="Shop Kiên Nguyễn cung cấp hệ thống theo dõi tiến độ món ăn và đơn hàng nhanh chóng, minh bạch, giúp khách hàng chủ động thời gian nhận món.">
+    <meta name="description"
+        content="Shop Kiên Nguyễn cung cấp hệ thống theo dõi tiến độ món ăn và đơn hàng nhanh chóng, minh bạch, giúp khách hàng chủ động thời gian nhận món.">
     <!-- Từ khóa -->
     <meta name="keywords" content="Shop Kiên Nguyễn, shop kiên nguyễn, theo dõi đơn hàng, tiến độ món ăn tại shop">
     <!-- Tác giả -->
@@ -57,11 +58,17 @@
             position: relative;
             cursor: url("cursor/cute-mouse.cur"), auto;
         }
+
         a,
         button,
         .menu-toggle,
         .nav-link,
-        [onclick]{
+        #closeModal,
+        [onclick] {
+            cursor: url("cursor/click-mouse.cur"), auto;
+        }
+
+        .feature-card {
             cursor: url("cursor/click-mouse.cur"), auto;
         }
 
@@ -78,7 +85,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
             z-index: 2000;
             position: fixed;
             backdrop-filter: blur(12px);
@@ -111,13 +118,13 @@
             overflow-y: auto;
             z-index: 1001;
             transform: translate3d(-100%, 0, 0);
-            transition: transform 0.35s cubic-bezier(.25,.8,.25,1);
+            transition: transform 0.35s cubic-bezier(.25, .8, .25, 1);
             will-change: transform;
-            box-shadow: 8px 0 30px rgba(0,0,0,0.45);
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.45);
         }
 
         .sidebar.active {
-            transform: translate3d(0,0,0);
+            transform: translate3d(0, 0, 0);
         }
 
 
@@ -417,7 +424,7 @@
             font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center; 
+            justify-content: center;
             text-align: center;
         }
 
@@ -457,7 +464,7 @@
             color: white;
             font-weight: bold;
             font-size: 16px;
-            
+
             margin-top: 15px;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(123, 92, 245, 0.4);
@@ -596,7 +603,7 @@
             align-items: center;
             gap: 0.8rem;
             transition: all 0.3s ease;
-            
+
         }
 
         .download-option:hover {
@@ -675,7 +682,7 @@
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.4s ease;
-            
+
         }
 
         .feature-card:hover {
@@ -798,36 +805,86 @@
                 padding: 10px;
             }
         }
-        .order-detail{
-            margin-top:10px;
-            display:none;
-            text-align:left;
+
+        .order-detail {
+            margin-top: 10px;
+            display: none;
+            text-align: left;
         }
 
-        .feature-card{
-            cursor:pointer;
-            transition:.25s;
+        .feature-card {
+            cursor: pointer;
+            transition: .25s;
         }
 
-        .feature-card:hover{
-            transform:translateY(-5px);
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
 
-        .feature-card{
+        .feature-card {
             animation: fadeIn .4s ease;
         }
 
-        @keyframes fadeIn{
-            from{
-                opacity:0;
-                transform:translateY(10px);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
-            to{
-                opacity:1;
-                transform:translateY(0);
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: #111;
+            color: #fff;
+            padding: 25px;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 18px;
+            position: relative;
+            animation: fade .25s ease;
+        }
+
+        #closeModal {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .feature-card {
+            cursor: pointer;
+        }
+
+        @keyframes fade {
+            from {
+                transform: scale(.9);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
     </style>
 </head>
 
@@ -850,12 +907,14 @@
         <ul class="nav-menu">
             <li class="nav-item"><a href="/home" class="nav-link"><i class="fa-solid fa-home"></i
                         class="fas fa-tachometer-alt"></i>Home</a></li>
-            <li class="nav-item"><a href="/order" class="nav-link active"><i class="fas fa-user"></i>Trạng Thái Đơn Hàng</a></li>
+            <li class="nav-item"><a href="/order" class="nav-link active"><i class="fas fa-user"></i>Trạng Thái Đơn
+                    Hàng</a></li>
             <li class="nav-item"><a href="https://zalo.me/84395904226" class="nav-link"><i
                         class="fas fa-headset"></i>Zalo</a></li>
             <li class="nav-item"><a href="https://fb.com/KenzDev8386" class="nav-link"><i
                         class="fab fa-facebook"></i>Facebook</a></li>
-            <li class="nav-item"><a href="/qr-generator" class="nav-link"><i class="fas fa-qrcode"></i>QR Generator</a></li>
+            <li class="nav-item"><a href="/qr-generator" class="nav-link"><i class="fas fa-qrcode"></i>QR Generator</a>
+            </li>
         </ul>
     </div>
 
@@ -868,9 +927,9 @@
         <div class="container">
             <h2 class="section-title">
                 <i class="fas fa-shop"></i>
-                Shop Kiên Nguyễn   
-            <h4 id="clock"></h4>
-            <h3 id="status" style="color: rgb(56, 231, 56);"><small>◉ Đang mở bán</small></h3>
+                Shop Kiên Nguyễn
+                <h4 id="clock"></h4>
+                <h3 id="status" style="color: rgb(56, 231, 56);"><small>◉ Đang mở bán</small></h3>
             </h2>
 
             <div class="progress-container" id="progress-container">
@@ -885,7 +944,7 @@
         <div class="features-section">
             <h3 class="features-title">
                 <i class="fas fa-sliders-h"></i>
-                Đơn hàng 
+                Đơn hàng
             </h3>
             <div class="features-grid" id="orders">
                 <!-- Đơn hàng sẽ được tải ở đây -->
@@ -896,11 +955,19 @@
             © 2026 - Shop Kiên Nguyễn
         </div>
     </div>
+    <!-- Modal chi tiết đơn -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
 </body>
 <script>
     function getVietnamTime() {
         const now = new Date();
-    
+
         const vnTime = new Intl.DateTimeFormat("en-GB", {
             timeZone: "Asia/Ho_Chi_Minh",
             hour: "2-digit",
@@ -908,28 +975,28 @@
             second: "2-digit",
             hour12: false
         }).formatToParts(now);
-    
+
         const hour = Number(vnTime.find(p => p.type === "hour").value);
         const minute = Number(vnTime.find(p => p.type === "minute").value);
         const second = Number(vnTime.find(p => p.type === "second").value);
-    
+
         return { hour, minute, second };
     }
-    
+
     function updateStatus() {
         const { hour, minute, second } = getVietnamTime();
-    
+
         const currentTime = hour + minute / 60;
-    
+
         const openTime = 8;      // 08:00
         const closeTime = 17.5;  // 17:30
-    
+
         const status = document.getElementById("status");
         const clock = document.getElementById("clock");
-    
-        clock.innerHTML = `🕒 ${hour.toString().padStart(2,"0")}:${minute
-            .toString().padStart(2,"0")}:${second.toString().padStart(2,"0")}`;
-    
+
+        clock.innerHTML = `🕒 ${hour.toString().padStart(2, "0")}:${minute
+            .toString().padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
+
         if (currentTime >= openTime && currentTime < closeTime) {
             status.innerHTML = '<small style="color:#38e738;">◉ Đang mở bán</small>';
         } else {
@@ -955,49 +1022,91 @@
     });
 
     const API_URL = "https://script.google.com/macros/s/AKfycbzO8wXl68Au6pxP_SA7MYIOG_SskVBsaFLhRAEHhGsewG39kttbXAl4_15Mks2iJd8pbw/exec";
-
     async function loadOrders() {
-      try {
-        const res = await fetch(API_URL);
-        if(!res.ok){
-            throw new Error("API lỗi");
+        try {
+            const res = await fetch(API_URL);
+            if (!res.ok) {
+                throw new Error("API lỗi");
+            }
+
+            const orders = await res.json();
+            const container = document.getElementById("orders");
+            container.innerHTML = "";
+            if (!orders.length) {
+                container.innerHTML = "<p class='label'>Chưa có đơn hàng</p>";
+                return;
+            }
+
+            orders.reverse().forEach(o => {
+
+                const orderCode = o["order_code"] || "Đang tạo...";
+                const customer = o["customer_name"] || "Khách lẻ";
+
+                container.insertAdjacentHTML("beforeend", `
+                <div class="feature-card" style="cursor:url('cursor/click-mouse.cur'), pointer;"
+                     data-code="${orderCode}"
+                     data-customer="${customer}"
+                     data-phone="${o.phone || ""}"
+                     data-items="${o.order_items || ""}"
+                     data-price="${o.price || ""}"
+                     data-status="${o.status || ""}">
+                     
+                  <div class="feature-icon">
+                    <i class="fas fa-receipt"></i>
+                  </div>
+                  <h4 class="feature-title">${orderCode}</h4>
+                  <p class="feature-desc">${customer}</p>
+                </div>
+            `);
+            });
+
+
+        } catch (err) {
+
+            console.error(err);
+
+            document.getElementById("orders").innerHTML =
+                "<p style='color:red'>Không tải được đơn hàng</p>";
         }
-
-        const orders = await res.json();
-        const container = document.getElementById("orders");
-        container.innerHTML = "";
-        if(!orders.length){
-            container.innerHTML = "<p class='label'>Chưa có đơn hàng</p>";
-            return;
-        }
-
-        orders.reverse().forEach(o => {
-
-          const orderCode = o["order_code"] || "Đang tạo...";
-          const customer = o["customer_name"] || "Khách lẻ";
-
-          container.innerHTML += `
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-receipt"></i>
-              </div>
-              <h4 class="feature-title">${orderCode}</h4>
-              <p class="feature-desc">${customer}</p>
-            </div>
-          `;
-        });
-
-      } catch(err){
-
-        console.error(err);
-
-        document.getElementById("orders").innerHTML =
-          "<p style='color:red'>Không tải được đơn hàng</p>";
-      }
     }
 
     loadOrders();
     setInterval(loadOrders, 5000);
+    document.addEventListener("click", function (e) {
+
+        const card = e.target.closest(".feature-card");
+        if (!card) return;
+
+        const modal = document.getElementById("orderModal");
+        const body = document.getElementById("modalBody");
+
+        body.innerHTML = `
+        <h2>${card.dataset.code}</h2>
+        <p><b>Khách:</b> ${card.dataset.customer}</p>
+        <p><b>Điện thoại:</b> ${card.dataset.phone}</p>
+        <p><b>Món:</b> ${card.dataset.items}</p>
+        <p><b>Giá:</b> ${card.dataset.price}</p>
+        <p><b>Trạng thái:</b> ${card.dataset.status}</p>
+        <style>
+            #closeModal{
+              cursor:url('cursor/click-mouse.cur'), pointer;
+            }
+      `;
+
+        modal.style.display = "flex";
+    });
+
+    document.getElementById("closeModal").onclick = () => {
+        document.getElementById("orderModal").style.display = "none";
+    };
+
+    window.onclick = (e) => {
+        if (e.target.id === "orderModal") {
+            e.target.style.display = "none";
+        }
+    };
+
 
 </script>
+
 </html>
