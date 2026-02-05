@@ -958,7 +958,7 @@
     <!-- Modal chi tiết đơn -->
     <div id="orderModal" class="modal">
         <div class="modal-content">
-            <span id="closeModal">&times;</span>
+            <span id="closeModal"></span>
             <div id="modalBody"></div>
         </div>
     </div>
@@ -1021,10 +1021,19 @@
         overlay.classList.remove("active");
     });
 
-    const API_URL = "https://script.google.com/macros/s/AKfycbzO8wXl68Au6pxP_SA7MYIOG_SskVBsaFLhRAEHhGsewG39kttbXAl4_15Mks2iJd8pbw/exec";
+    const GET = (function () {
+      const nums = [
+        104,116,116,112,115,58,47,47,115,99,114,105,112,116,46,103,111,111,103,108,101,46,99,111,109,47,
+        109,97,99,114,111,115,47,115,47,65,75,102,121,99,98,122,82,72,69,82,76,106,45,80,49,87,95,55,121,
+        115,53,48,55,122,69,50,117,50,76,70,76,122,50,112,85,77,48,101,52,69,95,87,66,120,53,48,108,116,
+        71,115,95,52,79,76,112,71,106,74,100,67,116,57,70,108,83,45,86,84,89,48,66,117,119,47,101,120,101,99
+      ];
+
+      return String.fromCharCode(...nums);
+    })();
     async function loadOrders() {
         try {
-            const res = await fetch(API_URL);
+            const res = await fetch(GET);
             if (!res.ok) {
                 throw new Error("API lỗi");
             }
@@ -1048,7 +1057,7 @@
                      data-customer="${customer}"
                      data-phone="${o.phone || ""}"
                      data-items="${o.order_items || ""}"
-                     data-price="${o.price || ""}"
+                     data-price="${o.price || ""} VNĐ"
                      data-status="${o.status || ""}">
                      
                   <div class="feature-icon">
@@ -1089,7 +1098,9 @@
         <p><b>Trạng thái:</b> ${card.dataset.status}</p>
         <style>
             #closeModal{
-              cursor:url('cursor/click-mouse.cur'), pointer;
+              width: 100%;
+              height: 100%;
+              cursor:url('cursor/close-mouse.cur'), pointer;
             }
       `;
 
