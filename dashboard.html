@@ -800,105 +800,172 @@
                 padding: 10px;
             }
         }
+
         .loading-screen {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 9999;
-          transition: all 0.8s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: all 0.8s ease;
         }
 
         .loading-screen.hidden {
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .loading-content {
-          text-align: center;
+            text-align: center;
         }
 
         .loading-logo {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
         .loading-logo i {
-          font-size: 2.5rem;
-          color: #ff0000ee;
+            font-size: 2.5rem;
+            color: #ff0000ee;
         }
 
         .loading-logo span {
-          font-size: 1.8rem;
-          color: #fff;
-          font-weight: 700;
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 700;
         }
 
         .loading-bar {
-          width: 250px;
-          height: 4px;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 2px;
-          overflow: hidden;
-          margin: 0 auto 20px;
+            width: 250px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto 20px;
         }
 
         .loading-progress {
-          width: 0;
-          height: 100%;
-          background: linear-gradient(90deg, #ff0000ee, #de1818);
-          border-radius: 2px;
-          animation: loadingProgress 3s ease-in-out forwards;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000ee, #de1818);
+            border-radius: 2px;
+            animation: loadingProgress 3s ease-in-out forwards;
         }
 
         .loading-text {
-          color: #ccc;
-          font-size: 1rem;
+            color: #ccc;
+            font-size: 1rem;
         }
 
         @keyframes loadingProgress {
-          0% {
-            width: 0%;
-          }
+            0% {
+                width: 0%;
+            }
 
-          100% {
-            width: 100%;
-          }
+            100% {
+                width: 100%;
+            }
         }
 
         #particleCanvas {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
         }
 
         .loading-logo span {
-          font-family: sans-serif;
-          font-size: 32px;
-          font-weight: 600;
+            font-family: sans-serif;
+            font-size: 32px;
+            font-weight: 600;
 
-          color: #ff2b2b;
+            color: #ff2b2b;
 
-          text-shadow:
-            0 0 5px rgba(255, 43, 43, 0.377),
-            0 0 12px rgba(255, 43, 43, 0.377),
-            0 0 24px rgba(255, 43, 43, 0.377);
+            text-shadow:
+                0 0 5px rgba(255, 43, 43, 0.377),
+                0 0 12px rgba(255, 43, 43, 0.377),
+                0 0 24px rgba(255, 43, 43, 0.377);
 
-          letter-spacing: 2px;
+            letter-spacing: 2px;
         }
+
+
+        .stats-container {
+            display: flex;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .08);
+            backdrop-filter: blur(10px);
+            transition: .25s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, .18);
+        }
+
+        .stat-icon {
+            font-size: 26px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .stat-label {
+            opacity: .7;
+            margin: 0;
+            font-size: 13px;
+        }
+    </style>
+    <style>
+        .stat-value{
+            transition: all .25s ease;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .loading{
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,.05) 25%,
+        rgba(255,255,255,.15) 50%,
+        rgba(255,255,255,.05) 75%
+    );
+    background-size:200% 100%;
+    animation: shimmer 1.2s infinite;
+    color:transparent;
+    border-radius:6px;
+}
+
+@keyframes shimmer{
+    from{background-position:200% 0;}
+    to{background-position:-200% 0;}
+}
+
     </style>
 </head>
 
@@ -936,9 +1003,9 @@
         </div>
 
         <ul class="nav-menu">
+            <li class="nav-item"><a href="/upload" class="nav-link"><i class="fas fa-upload"></i>Up Đơn Hàng</a>
             <li class="nav-item"><a href="/dashboard" class="nav-link active"><i class="fa-solid fa-dashboard"></i
                         class="fas fa-tachometer-alt"></i>Dashboard</a></li>
-            <li class="nav-item"><a href="/upload" class="nav-link"><i class="fas fa-upload"></i>Up Đơn Hàng</a>
             </li>
         </ul>
     </div>
@@ -954,82 +1021,142 @@
                 <div class="main-access-info"><b>Uy tín ~ Minh bạch ~ Chuyên nghiệp</b></div>
             </div>
         </div>
-        <div class="container">
-            <h2 class="section-title">
+        <div class="features-section">
+            <h2 class="features-title">
                 <i class="fas fa-dashboard"></i>
-                Doashboard Quản Lý Đơn Hàng
+                Dashboard Quản Lý Đơn Hàng
             </h2>
-
-            <div class="input-group">
-                <div class="label">
-                    <p class="label">Xin chân thành cảm ơn Quý khách</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
                 </div>
+                <h4 class="feature-title">Doanh Thu</h4>
+                <p class="stat-value" id="revenue"></p>
             </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h4 class="feature-title">Tổng Đơn Hàng</h4>
+                <p class="stat-value" id="total-orders"></p>
+            </div>
+        </div>
+    </div>
+
 
             <div class="progress-container" id="progress-container">
                 <div class="progress-bar">
                     <div class="progress" id="progress-bar"></div>
                 </div>
-            <div class="error-message hide" id="error-message">KenZ Sever Erro</div>
-            <div class="success-message hide" id="success-message"></div>
-        </div>
+                <div class="error-message hide" id="error-message">KenZ Sever Erro</div>
+                <div class="success-message hide" id="success-message"></div>
+            </div>
 
-        <div class="footer">
-            © 2026 - Shop Kiên Nguyễn
+            <div class="footer">
+                © 2026 - Shop Kiên Nguyễn
+            </div>
         </div>
-    </div>
 </body>
-  <script>
+<script>
     function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 15;
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 15;
 
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
 
-        const size = Math.random() * 4 + 1;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 5;
-        const duration = Math.random() * 3 + 4;
+            const size = Math.random() * 4 + 1;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 4;
 
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.animationDuration = `${duration}s`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
 
-        const colors = ['#ff0000', '#de1818', '#ff00001a'];
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.background = randomColor;
+            const colors = ['#ff0000', '#de1818', '#ff00001a'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = randomColor;
 
-        particlesContainer.appendChild(particle);
-      }
+            particlesContainer.appendChild(particle);
+        }
     }
 
     const params = new URLSearchParams(window.location.search);
     const msg = params.get("msg");
 
     if (msg) {
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.style.display = "block";
+        const toast = document.getElementById("toast");
+        toast.textContent = msg;
+        toast.style.display = "block";
     }
     document.addEventListener('DOMContentLoaded', function () {
-      const loadingScreen = document.getElementById('loadingScreen');
+        const loadingScreen = document.getElementById('loadingScreen');
 
-      setTimeout(function () {
-        loadingScreen.classList.add('hidden');
+        setTimeout(function () {
+            loadingScreen.classList.add('hidden');
 
-        function initializeWebsite() {
-          initializeParticleSystem();
-        }
+            function initializeWebsite() {
+                initializeParticleSystem();
+            }
 
-      }, 3000);
+        }, 3000);
     });
-  </script>
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const revenueEl = document.getElementById("revenue");
+    const ordersEl  = document.getElementById("total-orders");
+
+    const GET = (() => String.fromCharCode(
+        104,116,116,112,115,58,47,47,115,99,114,105,112,116,46,103,111,111,103,108,101,46,99,111,109,47,
+        109,97,99,114,111,115,47,115,47,65,75,102,121,99,98,122,78,121,77,55,111,97,121,77,77,67,83,55,67,
+        100,87,70,74,54,102,118,114,99,67,89,68,109,105,95,89,71,78,82,70,95,89,45,103,45,117,76,112,70,89,
+        50,90,50,122,51,114,82,75,95,106,83,90,65,71,50,115,105,77,111,79,48,75,50,103,47,101,120,101,99
+    ))();
+
+    async function getDashboard(){
+
+        try{
+
+            const res = await fetch(GET, {
+                cache: "no-store" // tránh cache → luôn dữ liệu mới
+            });
+
+            const data = await res.json();
+
+            const revenue = data.dashboard.revenue;
+            const total   = data.dashboard.total_number_of_orders;
+
+            // gắn thẳng vào div
+            revenueEl.textContent =
+                Number(revenue).toLocaleString('vi-VN') + " VNĐ";
+
+            ordersEl.textContent = total;
+
+        }catch(err){
+            console.error("Dashboard error:", err);
+        }
+    }
+
+    // chạy ngay
+    getDashboard();
+
+    // refresh âm thầm mỗi 5s
+    setInterval(getDashboard, 15000);
+
+});
+</script>
+
+
+</script>
 <script>
     const menuToggle = document.getElementById("menuToggle");
     const sidebar = document.getElementById("sidebar");
@@ -1045,6 +1172,5 @@
         overlay.classList.remove("active");
     });
 </script>
-
 
 </html>
