@@ -36,7 +36,7 @@
       --muted: #888888;
       --text: #ffffff;
       --primary: #ff00001a;
-      --secondary: #ce0f0f;
+      --secondary: #ff1d1dbd;
       --accent: #ff00001a;
     }
 
@@ -63,14 +63,14 @@
     .card {
       background: rgba(255, 255, 255, .05);
       backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, .1);
+      border: 1px solid #ffffff1a;
       border-radius: 20px;
       padding: 30px 25px;
       width: 100%;
       max-width: 380px;
       text-align: center;
       box-shadow: 0 0 30px rgba(255, 0, 0, .2),
-        0 0 50px rgba(173, 74, 231, .1);
+        0 0 50px #ad4ae71a;
       animation: fadeIn 0.8s ease;
       position: relative;
       overflow: hidden;
@@ -188,8 +188,9 @@
       width: 100%;
       padding: 15px 15px 15px 45px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, .15);
-      background: rgba(255, 255, 255, .07);
+      border: 1px solid #dc010133;
+      background: rgb(255 255 255 / 0%);
+      box-shadow: 0 0 50px #ad4ae71a;
       color: var(--text);
       font-size: 14px;
       outline: none;
@@ -202,7 +203,7 @@
       border-color: var(--primary);
       box-shadow: 0 0 0 2px rgba(255, 0, 0, .3),
         0 0 15px rgba(255, 0, 0, .2);
-      background: rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, 0.032);
       transform: translateY(-2px);
     }
 
@@ -220,7 +221,7 @@
       border-radius: 12px;
       cursor: pointer;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
+      color: #ffffff33;
       transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 0 0 20px rgba(255, 0, 0, .3);
       position: relative;
@@ -463,6 +464,20 @@
 
       letter-spacing: 2px;
     }
+
+    .label {
+      color: #ff0000;
+      font-size: 18px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .label i {
+      gap: 8px;
+    }
   </style>
 </head>
 
@@ -501,12 +516,12 @@
     <form id="loginForm">
       <div class="form-group">
         <i class="fas fa-user"></i>
-        <input type="text" name="username" placeholder="Username" required autocomplete="username" />
+        <input type="text" class="label" name="username" placeholder="Username" required autocomplete="username" />
       </div>
 
       <div class="form-group">
         <i class="fas fa-key"></i>
-        <input type="password" name="key" placeholder="Your Key" required autocomplete="current-password" />
+        <input type="password" class="label" name="key" placeholder="Your Key" required autocomplete="current-password" />
       </div>
 
       <button type="submit" id="loginBtn">
@@ -517,7 +532,7 @@
       <p id="loginKen"></p>
     </form>
 
-    <a class="buy-access" href="https://fb.com/me" target="_blank">
+    <a class="buy-access" href="https://fb.com/KenzDev8386" target="_blank">
       <i class="fas fa-coins"></i> Get Key Access
     </a>
 
@@ -654,102 +669,112 @@
       });
     });
   </script>
-  <script>
-(function () {
+<script>
+  (function () {
 
-  // 🔐 Che URL Web App
-  function _w() {
-    return [
-      104,116,116,112,115,58,47,47,
-      115,99,114,105,112,116,46,103,111,111,103,108,101,46,99,111,109,47,
-      109,97,99,114,111,115,47,115,47,
-      65,75,102,121,99,98,122,82,88,45,111,101,118,79,77,70,54,67,70,67,56,
-      83,104,102,88,88,51,67,76,54,70,72,95,106,112,72,57,112,120,108,107,106,
-      55,76,100,66,56,113,78,80,49,107,80,55,73,82,81,79,71,122,99,86,118,49,
-      101,95,98,57,76,86,109,76,47,101,120,101,99
-    ].map(c => String.fromCharCode(c)).join('');
-  }
-
-  const WEB_APP_URL = _w();
-
-  // 🔁 Nếu đã login → đá thẳng sang upload
-  if (sessionStorage.getItem("isAdminLogin") === "true") {
-    location.replace("upload.html");
-    return;
-  }
-
-  const form = document.getElementById("loginForm");
-  const messageBox = document.getElementById("loginKen");
-  const loginBtn = document.getElementById("loginBtn");
-
-  if (!form || !messageBox || !loginBtn) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    messageBox.textContent = "";
-    loginBtn.disabled = true;
-    loginBtn.innerHTML = "Đang kiểm tra...";
-
-    const username = form.username.value.trim();
-    const key = form.key.value.trim();
-
-    if (!username || !key) {
-      showError("Vui lòng nhập đầy đủ thông tin");
-      resetBtn();
-      return;
+    // 🔐 Che URL Web App
+    function _w() {
+      return [
+        104,116,116,112,115,58,47,47,
+        115,99,114,105,112,116,46,103,111,111,103,108,101,46,99,111,109,47,
+        109,97,99,114,111,115,47,115,47,
+        65,75,102,121,99,98,122,82,88,45,111,101,118,79,77,70,54,67,70,67,56,
+        83,104,102,88,88,51,67,76,54,70,72,95,106,112,72,57,112,120,108,107,106,
+        55,76,100,66,56,113,78,80,49,107,80,55,73,82,81,79,71,122,99,86,118,49,
+        101,95,98,57,76,86,109,76,47,101,120,101,99
+      ].map(c => String.fromCharCode(c)).join('');
     }
 
-    try {
-      const res = await fetch(
-        WEB_APP_URL +
-        "?action=login" +
-        "&username=" + encodeURIComponent(username) +
-        "&key=" + encodeURIComponent(key)
-      );
+    const WEB_APP_URL = _w();
+    const ONE_HOUR = 60 * 60 * 1000;
 
-      const data = await res.json();
+    // ✅ CHECK SESSION HẾT HẠN
+    const isLogin = sessionStorage.getItem("isAdminLogin");
+    const loginTime = sessionStorage.getItem("admin_login_time");
 
-      if (!data.success) {
-        showError(data.message || "Đăng nhập thất bại");
+    if (isLogin && loginTime) {
+
+      const isExpired = Date.now() - Number(loginTime) > ONE_HOUR;
+
+      if (isExpired) {
+        sessionStorage.clear(); // logout
+      } else {
+        location.replace("upload.html");
+        return;
+      }
+    }
+
+    const form = document.getElementById("loginForm");
+    const messageBox = document.getElementById("loginKen");
+    const loginBtn = document.getElementById("loginBtn");
+
+    if (!form || !messageBox || !loginBtn) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      messageBox.textContent = "";
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = "Đang kiểm tra...";
+
+      const username = form.username.value.trim();
+      const key = form.key.value.trim();
+
+      if (!username || !key) {
+        showError("Vui lòng nhập đầy đủ thông tin");
         resetBtn();
         return;
       }
 
-      // ✅ LOGIN OK → lưu SESSION
-      sessionStorage.setItem("isAdminLogin", "true");
-      sessionStorage.setItem("admin_login_time", Date.now());
+      try {
+        const res = await fetch(
+          WEB_APP_URL +
+          "?action=login" +
+          "&username=" + encodeURIComponent(username) +
+          "&key=" + encodeURIComponent(key)
+        );
 
-      showSuccess("Đăng nhập thành công");
+        const data = await res.json();
 
-      setTimeout(() => {
-        location.replace("upload.html");
-      }, 500);
+        if (!data.success) {
+          showError(data.message || "Đăng nhập thất bại");
+          resetBtn();
+          return;
+        }
 
-    } catch (err) {
-      showError("Không thể kết nối máy chủ");
-      resetBtn();
+        // ✅ LOGIN OK → lưu SESSION + TIME
+        sessionStorage.setItem("isAdminLogin", "true");
+        sessionStorage.setItem("admin_login_time", Date.now());
+
+        showSuccess("Đăng nhập thành công");
+
+        setTimeout(() => {
+          location.replace("upload.html");
+        }, 500);
+
+      } catch (err) {
+        showError("Không thể kết nối máy chủ");
+        resetBtn();
+      }
+    });
+
+    function showError(msg) {
+      messageBox.textContent = " " + msg;
+      messageBox.style.color = "#e74c3c";
     }
-  });
 
-  function showError(msg) {
-    messageBox.textContent = "❌ " + msg;
-    messageBox.style.color = "#e74c3c";
-  }
+    function showSuccess(msg) {
+      messageBox.textContent = " " + msg;
+      messageBox.style.color = "#2ecc71";
+    }
 
-  function showSuccess(msg) {
-    messageBox.textContent = "✅ " + msg;
-    messageBox.style.color = "#2ecc71";
-  }
+    function resetBtn() {
+      loginBtn.disabled = false;
+      loginBtn.innerHTML =
+        '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+    }
 
-  function resetBtn() {
-    loginBtn.disabled = false;
-    loginBtn.innerHTML =
-      '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
-  }
-
-})();
+  })();
 </script>
 </body>
-
 </html>
